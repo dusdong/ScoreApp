@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="scoreApp">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="app/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="app/css/app.css" />
+</head>
+<body ng-controller="ScoreController">
+    <div class="container">
+        <h3>Pontos</h3>
+        <div class="row" ng-repeat="score in scores">
+            {{score.id}}
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="app/lib/bootstrap.min.js"></script>
+    <script src="app/js/app.js"></script>
+    <script src="app/js/services/scoreData.js"></script>
+    <script src="app/js/controllers/ScoreController.js"></script>
+</body>
+</html>
