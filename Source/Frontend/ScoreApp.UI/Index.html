@@ -26,7 +26,7 @@
                 <div class="col-md-4">
                     <h4 class="candidate">{{score.candidate.name}}</h4>
                     <p class="text-justify">{{score.reason}}</p>
-                    <time class="timeago" datetime="{{score.date}}"></time>
+                    <time am-time-ago="score.date"></time>
                     <div class="voters">
                         <img class="small-avatar" title="{{voter.name}}" ng-src="{{voter.avatar}}" ng-repeat="voter in score.voters" />
                     </div>
@@ -37,7 +37,8 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="app/lib/jquery.timeago-1.4.js"></script>
+    <script src="app/lib/moment-with-langs-2.5.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.6.2/angular-moment.min.js"></script>
     <script src="app/lib/bootstrap.min.js"></script>
     <script src="app/js/app.js"></script>
     <script src="app/js/services/scoreData.js"></script>

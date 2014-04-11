@@ -48,7 +48,6 @@
     <Content Include="app\js\controllers\ScoreController.js" />
     <Content Include="app\js\services\scoreData.js" />
     <Content Include="app\lib\bootstrap.min.js" />
-    <Content Include="app\lib\jquery.timeago-1.4.js" />
     <Content Include="Index.html" />
   </ItemGroup>
   <ItemGroup>

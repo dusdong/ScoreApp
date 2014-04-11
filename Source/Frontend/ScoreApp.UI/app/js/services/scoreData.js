@@ -8,7 +8,7 @@ scoreApp.factory('scoreData', function () {
                 {
                     id: 1,
                     reason: 'É com vocêam Lombardiam. Vem pra lá, mah voceam vai pra cá. Agoram vaimm, agoram vaim. Eu só acreditoammmm.....',
-                    date: '12/01/2014 12:10:55',
+                    date: '2014/04/10 23:10:55',
                     creator: { email: 'a@jo.com', name: 'Fulano', avatar: 'app/img/no_avatar.jpg' },
                     candidate: { email: 'b@jo.com', name: 'Ciclano', avatar: 'app/img/no_avatar.jpg' },
                     voters: [
@@ -19,7 +19,7 @@ scoreApp.factory('scoreData', function () {
                 {
                     id: 2,
                     reason: 'Ma quem quer dinheiroam? Boca sujuam... sem vergonhuamm. Ma vocêm está cetoam dissoam? O Rauam Gil-uam é gayam! ... Mah Oh Ah Ae Ih Ih o Rauam Gil-uam é gayam!',
-                    date: '10/04/2014 12:10:55',
+                    date: '2014/01/01 12:10:55',
                     creator: { email: 'a@jo.com', name: 'Beltrano', avatar: 'app/img/no_avatar.jpg' },
                     candidate: { email: 'b@jo.com', name: 'Fulano', avatar: 'app/img/no_avatar.jpg' },
                     voters: [
