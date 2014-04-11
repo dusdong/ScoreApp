@@ -46,3 +46,17 @@ h4.candidate {
     left: 150px;
     margin-bottom: 2px;
 }
+
+time {
+    font-size: 75%;
+    font-style: italic;
+    color: #d3d3d3;
+}
+
+.score time {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 2px;
+    margin-right: 2px;
+}
