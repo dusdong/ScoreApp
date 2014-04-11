@@ -18,7 +18,7 @@
             <div class="row score" ng-repeat="score in scores">
                 <div class="col-md-2">
                     <img class="avatar" title="{{score.candidate.name}}" ng-src="{{score.candidate.avatar}}" />
-                    <progressbar class="progress-striped active" value="score | scoreProgress">{{score | scoreProgress}}%</progressbar>
+                    <progressbar class="progress-striped active" type="{{score | progressType}}" value="score | scoreProgress">{{score | scoreProgress | number:0}}%</progressbar>
                 </div>
                 <div class="col-md-10">
                     <h4 class="candidate">{{score.candidate.name}}</h4>
@@ -42,6 +42,7 @@
     <script src="app/lib/underscore-1.6-min.js"></script>
 
     <script src="app/js/app.js"></script>
+    <script src="app/js/services/scoreCalculator.js"></script>
     <script src="app/js/filters.js"></script>
     <script src="app/js/services/scoreData.js"></script>
     <script src="app/js/controllers/ScoreController.js"></script>

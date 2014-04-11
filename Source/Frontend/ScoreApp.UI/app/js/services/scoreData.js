@@ -42,6 +42,18 @@ scoreApp.factory('scoreData', function () {
                         { email: 'b@jo.com', name: 'Outro', avatar: 'app/img/no_avatar.jpg', isInFavor: true },
                         { email: 'b@jo.com', name: 'Fulano', avatar: 'app/img/no_avatar.jpg', isInFavor: true }
                     ]
+                },
+                {
+                    id: 4,
+                    reason: 'Silvio Santos Ipsum eu não queriam perguntaram issoam publicamenteam, ma.',
+                    date: '2014/04/11 15:02:55',
+                    creator: { email: 'a@jo.com', name: 'Laerte', avatar: 'app/img/no_avatar.jpg' },
+                    candidate: { email: 'b@jo.com', name: 'Silvio Santos', avatar: 'app/img/no_avatar.jpg' },
+                    witnesses: 9,
+                    voters: [
+                        { email: 'b@jo.com', name: 'Outro', avatar: 'app/img/no_avatar.jpg', isInFavor: true },
+                        { email: 'b@jo.com', name: 'Fulano', avatar: 'app/img/no_avatar.jpg', isInFavor: false }
+                    ]
                 }
             ]
         },

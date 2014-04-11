@@ -1,12 +1,21 @@
 ﻿"use strict";
 
-scoreApp.filter('scoreProgress', function (_) {
+scoreApp.filter('scoreProgress', function (scoreCalculator) {
     return function (score) {
-        var votersInFavor = _.filter(score.voters, function (voter) {
-            return voter.isInFavor == true;
-        });
-        
-        var percentage = (100 * ((votersInFavor.length * 100) / score.witnesses)) / 50; //50 é quantos % deve haver de votos a favor para que o ponto seja contabilizado (parametrizar).
-        return percentage > 100 ? 100 : percentage;
+        return scoreCalculator.percentage(score);
+    }
+});
+
+scoreApp.filter('progressType', function (scoreCalculator) {
+    return function (score) {
+        var percentage = scoreCalculator.percentage(score);
+        if (percentage < 25)
+            return 'sucess';
+        if (percentage < 50)
+            return 'info';
+        if (percentage < 75)
+            return 'warning';
+
+        return 'danger';
     }
 });
