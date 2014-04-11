@@ -1,20 +1,43 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app="scoreApp">
+<html lang="pt-br" ng-app="scoreApp">
 <head>
+    <meta charset="utf-8" />
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="app/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="app/css/font-awesome.min.css" />
+    <!--[if IE 7]>
+        <link href="app/css/font-awesome-ie7.min.css" rel="stylesheet" />
+    <![endif]-->
+    <!-- fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300" />
     <link rel="stylesheet" href="app/css/app.css" />
 </head>
 <body ng-controller="ScoreController">
     <div class="container">
         <h3>Pontos</h3>
-        <div class="row" ng-repeat="score in scores">
-            {{score.id}}
+
+        <div class="scores">
+            <div class="row score" ng-repeat="score in scores">
+                <div class="col-md-1">
+                    <img class="avatar pull-left" title="{{score.candidate.name}}" ng-src="{{score.candidate.avatar}}" />
+                </div>
+                <div class="col-md-4">
+                    <h4 class="candidate">{{score.candidate.name}}</h4>
+                    <p class="text-justify">{{score.reason}}</p>
+                    <time class="timeago" datetime="{{score.date}}"></time>
+                    <div class="voters">
+                        <img class="small-avatar" title="{{voter.name}}" ng-src="{{voter.avatar}}" ng-repeat="voter in score.voters" />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="app/lib/jquery.timeago-1.4.js"></script>
     <script src="app/lib/bootstrap.min.js"></script>
     <script src="app/js/app.js"></script>
     <script src="app/js/services/scoreData.js"></script>

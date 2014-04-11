@@ -40,16 +40,26 @@
   <ItemGroup>
     <Content Include="app\css\app.css" />
     <Content Include="app\css\bootstrap.min.css" />
+    <Content Include="app\css\font-awesome-ie7.min.css" />
+    <Content Include="app\css\font-awesome.min.css" />
+    <Content Include="app\font\fontawesome-webfont.svg" />
+    <Content Include="app\img\no_avatar.jpg" />
     <Content Include="app\js\app.js" />
     <Content Include="app\js\controllers\ScoreController.js" />
     <Content Include="app\js\services\scoreData.js" />
     <Content Include="app\lib\bootstrap.min.js" />
+    <Content Include="app\lib\jquery.timeago-1.4.js" />
     <Content Include="Index.html" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\img\" />
     <Folder Include="app\partials\" />
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\font\fontawesome-webfont.eot" />
+    <Content Include="app\font\fontawesome-webfont.ttf" />
+    <Content Include="app\font\fontawesome-webfont.woff" />
+    <Content Include="app\font\FontAwesome.otf" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
