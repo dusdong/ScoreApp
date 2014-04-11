@@ -1,6 +1,11 @@
 ﻿'use strict';
 
-var scoreApp = angular.module('scoreApp', ['angularMoment', 'ui.bootstrap']);
+var underscore = angular.module('underscore', []);
+underscore.factory('_', function () {
+    return window._;
+});
+
+var scoreApp = angular.module('scoreApp', ['angularMoment', 'ui.bootstrap', 'underscore']);
 
 scoreApp.run(['$window',
     function ($window) {
