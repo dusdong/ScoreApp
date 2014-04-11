@@ -14,18 +14,18 @@
     <div class="container">
         <h3>Pontos</h3>
 
-        <div class="scores">
+        <div>
             <div class="row score" ng-repeat="score in scores">
-                <div class="col-md-1">
-                    <img class="avatar pull-left" title="{{score.candidate.name}}" ng-src="{{score.candidate.avatar}}" />
-                    <progressbar class="progress-striped active pull-left" value="50">50%</progressbar>
+                <div class="col-md-2">
+                    <img class="avatar" title="{{score.candidate.name}}" ng-src="{{score.candidate.avatar}}" />
+                    <progressbar class="progress-striped active" value="50">50%</progressbar>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-10">
                     <h4 class="candidate">{{score.candidate.name}}</h4>
                     <p class="text-justify">{{score.reason}}</p>
 
-                    <time am-time-ago="score.date"></time>
-                    <div class="voters">
+                    <time class="pull-right" am-time-ago="score.date"></time>
+                    <div>
                         <img class="small-avatar" title="{{voter.name}}" ng-src="{{voter.avatar}}" ng-repeat="voter in score.voters" />
                     </div>
                 </div>
