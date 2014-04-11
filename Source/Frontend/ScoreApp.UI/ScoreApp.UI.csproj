@@ -45,9 +45,11 @@
     <Content Include="app\font\fontawesome-webfont.svg" />
     <Content Include="app\img\no_avatar.jpg" />
     <Content Include="app\js\app.js" />
-    <Content Include="app\js\controllers\ScoreController.js" />
+    <Content Include="app\js\controllers\ScoreCtrl.js" />
     <Content Include="app\js\services\scoreData.js" />
     <Content Include="app\lib\bootstrap.min.js" />
+    <Content Include="app\lib\moment-with-langs-2.5.1.min.js" />
+    <Content Include="app\lib\ui-bootstrap-tpls-0.10.0.min.js" />
     <Content Include="Index.html" />
   </ItemGroup>
   <ItemGroup>

@@ -22,10 +22,12 @@
             <div class="row score" ng-repeat="score in scores">
                 <div class="col-md-1">
                     <img class="avatar pull-left" title="{{score.candidate.name}}" ng-src="{{score.candidate.avatar}}" />
+                    <progressbar class="progress-striped active pull-left" value="50">50%</progressbar>
                 </div>
                 <div class="col-md-4">
                     <h4 class="candidate">{{score.candidate.name}}</h4>
                     <p class="text-justify">{{score.reason}}</p>
+
                     <time am-time-ago="score.date"></time>
                     <div class="voters">
                         <img class="small-avatar" title="{{voter.name}}" ng-src="{{voter.avatar}}" ng-repeat="voter in score.voters" />
@@ -40,6 +42,7 @@
     <script src="app/lib/moment-with-langs-2.5.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.6.2/angular-moment.min.js"></script>
     <script src="app/lib/bootstrap.min.js"></script>
+    <script src="app/lib/ui-bootstrap-tpls-0.10.0.min.js"></script>
     <script src="app/js/app.js"></script>
     <script src="app/js/services/scoreData.js"></script>
     <script src="app/js/controllers/ScoreController.js"></script>

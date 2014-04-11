@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var scoreApp = angular.module('scoreApp', ['angularMoment']);
+var scoreApp = angular.module('scoreApp', ['angularMoment', 'ui.bootstrap']);
 
 scoreApp.run(['$window',
     function ($window) {
