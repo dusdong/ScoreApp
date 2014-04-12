@@ -42,6 +42,7 @@
     <Content Include="app\font\fontawesome-webfont.svg" />
     <Content Include="app\img\no_avatar.jpg" />
     <Content Include="app\js\app.js" />
+    <Content Include="app\js\controllers\MenuController.js" />
     <Content Include="app\js\controllers\ScoreController.js" />
     <Content Include="app\js\filters.js" />
     <Content Include="app\js\services\scoreData.js" />
