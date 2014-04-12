@@ -1,4 +1,7 @@
-﻿div.score {
+﻿body{
+    padding-top: 70px;
+}
+div.score {
     border-bottom: 1px dotted #d0d8e0;
     padding: 10px;
     cursor: pointer;

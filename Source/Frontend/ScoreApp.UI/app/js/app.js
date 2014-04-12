@@ -6,9 +6,10 @@ var underscore = angular.module('underscore', [])
     });
 
 var scoreApp = angular.module('scoreApp', ['ngRoute', 'angularMoment', 'ui.bootstrap', 'underscore'])
-    .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/Pontos', { templateUrl: '/app/partials/Scores.html', controller: 'ScoreController' });
-        $routeProvider.otherwise({ redirectTo: '/Pontos' });
+    .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+        $routeProvider.when('/Votacao', { templateUrl: '/app/partials/Scores.html', controller: 'ScoreController' });
+        $routeProvider.otherwise({ redirectTo: '/Votacao' });
+        $locationProvider.html5Mode(true);
     }])
     .run(['$window', function ($window) {
         $window.moment.lang('pt-BR');
