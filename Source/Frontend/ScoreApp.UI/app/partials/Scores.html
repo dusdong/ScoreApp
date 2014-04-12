@@ -1,0 +1,19 @@
+﻿<h3>Pontos</h3>
+
+<div>
+    <div class="row score" ng-repeat="score in scores">
+        <div class="col-md-2">
+            <img class="avatar" title="{{score.candidate.name}}" ng-src="{{score.candidate.avatar}}" />
+            <progressbar class="progress-striped active" type="{{score | progressType}}" value="score | scoreProgress">{{score | scoreProgress | number:0}}%</progressbar>
+        </div>
+        <div class="col-md-10">
+            <h4 class="candidate">{{score.candidate.name}}</h4>
+            <p class="text-justify">{{score.reason}}</p>
+
+            <time class="pull-right" am-time-ago="score.date"></time>
+            <div>
+                <img class="small-avatar" title="{{voter.name}}" ng-src="{{voter.avatar}}" ng-repeat="voter in score.voters" />
+            </div>
+        </div>
+    </div>
+</div>
