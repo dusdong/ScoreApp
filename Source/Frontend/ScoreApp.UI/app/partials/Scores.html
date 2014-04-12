@@ -2,7 +2,7 @@
 <hr />
 
 <div class="row score" style="position:relative" ng-repeat="score in scores">
-    <div class="col-md-2" >
+    <div class="col-md-2">
         <img class="avatar center-block" title="{{score.candidate.name}}" ng-src="{{score.candidate.avatar}}" />
         <progressbar style="height:5px" class="progress-striped active" type="{{score | progressType}}" value="score | scoreProgress" title="{{score | scoreProgress}}%"></progressbar>
     </div>
@@ -12,7 +12,9 @@
 
         <time class="pull-right" style="position:absolute;bottom:0;right:0;margin-bottom:2px;margin-right:4px;" am-time-ago="score.date"></time>
         <div style="position:absolute;bottom:0;margin-bottom:2px;">
-            <img class="small-avatar" title="{{voter.name}}" ng-src="{{voter.avatar}}" ng-repeat="voter in score.voters" />
+            <div class="pull-left" ng-repeat="voter in score.voters" style="position:relative;">
+                <img class="small-avatar {{voter | voterColor}}" title="{{voter.name}}" ng-src="{{voter.avatar}}" />
+            </div>
         </div>
     </div>
 </div>

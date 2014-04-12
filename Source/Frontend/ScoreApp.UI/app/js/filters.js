@@ -19,3 +19,9 @@ scoreApp.filter('progressType', function (scoreCalculator) {
         return 'danger';
     }
 });
+
+scoreApp.filter('voterColor', function () {
+    return function (voter) {
+        return voter.isInFavor ? 'green' : 'red';
+    }
+});
