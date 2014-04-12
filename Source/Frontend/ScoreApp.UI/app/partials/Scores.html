@@ -1,17 +1,17 @@
 ﻿<h1>Candidatos</h1>
-<hr/>
+<hr />
 
-<div class="row score" ng-repeat="score in scores">
-    <div class="col-md-2">
-        <img class="avatar" title="{{score.candidate.name}}" ng-src="{{score.candidate.avatar}}" />
-        <progressbar class="progress-striped active" type="{{score | progressType}}" value="score | scoreProgress">{{score | scoreProgress | number:0}}%</progressbar>
+<div class="row score" style="position:relative" ng-repeat="score in scores">
+    <div class="col-md-2" >
+        <img class="avatar center-block" title="{{score.candidate.name}}" ng-src="{{score.candidate.avatar}}" />
+        <progressbar style="height:5px" class="progress-striped active" type="{{score | progressType}}" value="score | scoreProgress" title="{{score | scoreProgress}}%"></progressbar>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-8" style="position:static;">
         <h4 class="candidate">{{score.candidate.name}}</h4>
         <p class="text-justify">{{score.reason}}</p>
 
-        <time class="pull-right" am-time-ago="score.date"></time>
-        <div>
+        <time class="pull-right" style="position:absolute;bottom:0;right:0;margin-bottom:2px;margin-right:4px;" am-time-ago="score.date"></time>
+        <div style="position:absolute;bottom:0;margin-bottom:2px;">
             <img class="small-avatar" title="{{voter.name}}" ng-src="{{voter.avatar}}" ng-repeat="voter in score.voters" />
         </div>
     </div>
