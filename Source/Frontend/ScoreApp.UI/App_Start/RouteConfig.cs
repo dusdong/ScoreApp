@@ -11,7 +11,7 @@ namespace ScoreApp.UI
 
             routes.MapRoute(
                name: "Votacao",
-               url: "Votacao",
+               url: "Votacao/{action}",
                defaults: new { controller = "Home", action = "Index" }
            );
 

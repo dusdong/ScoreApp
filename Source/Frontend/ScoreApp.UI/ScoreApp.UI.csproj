@@ -125,7 +125,7 @@
     <Content Include="app\img\no_avatar.jpg" />
     <Content Include="app\js\app.js" />
     <Content Include="app\js\controllers\MenuController.js" />
-    <Content Include="app\js\controllers\ScoreController.js" />
+    <Content Include="app\js\controllers\VotingController.js" />
     <Content Include="app\js\filters.js" />
     <Content Include="app\js\services\scoreCalculator.js" />
     <Content Include="app\js\services\scoreData.js" />
@@ -133,7 +133,7 @@
     <Content Include="app\lib\moment-with-langs-2.5.1.min.js" />
     <Content Include="app\lib\ui-bootstrap-tpls-0.10.0.min.js" />
     <Content Include="app\lib\underscore-1.6-min.js" />
-    <Content Include="app\partials\Scores.html" />
+    <Content Include="app\partials\Voting.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
