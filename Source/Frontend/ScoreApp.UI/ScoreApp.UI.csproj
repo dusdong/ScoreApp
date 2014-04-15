@@ -108,6 +108,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\js\controllers\LoginController.js" />
+    <Content Include="app\js\services\authentication.js" />
+    <Content Include="app\partials\Login.html" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>

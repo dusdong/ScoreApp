@@ -4,7 +4,7 @@
 <div class="row score" style="position:relative" ng-repeat="score in scores">
     <div class="col-md-2">
         <img class="avatar center-block" title="{{score.candidate.name}}" ng-src="{{score.candidate.avatar}}" />
-        <div class="center-block">
+        <div class="btn-group center-block">
             <button type="button" class="btn btn-default btn-sm" ng-click="vote(score.id, 'yes')"><i class="fa fa-thumbs-up"></i></button>
             <button type="button" class="btn btn-default btn-sm" ng-click="vote(score.id, 'no')"><i class="fa fa-thumbs-down"></i></button>
         </div>

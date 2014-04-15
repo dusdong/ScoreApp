@@ -1,6 +1,5 @@
 ﻿'use strict';
 
-scoreApp.controller('MenuController',
-    function MenuController($scope, scoreData) {
-        $scope.scoresToVote = scoreData.count();
-    });
+scoreApp.controller('MenuController', ['$scope', 'scoreData', function ($scope, scoreData) {
+    $scope.scoresToVote = scoreData.count();
+}]);

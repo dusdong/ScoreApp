@@ -2,6 +2,8 @@
     padding-top: 70px;
 }
 
+.ng-cloak { display:none; }
+
 div.score {
     border-bottom: 1px dotted #d0d8e0;
     padding: 10px;
