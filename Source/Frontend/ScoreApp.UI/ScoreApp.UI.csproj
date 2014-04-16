@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\css\bootstrap-social.css" />
+    <Content Include="app\lib\ua-facebook-picture.js" />
     <Content Include="app\partials\Home.html" />
     <Content Include="app\partials\Login.html" />
     <Content Include="Views\Home\Index.cshtml" />

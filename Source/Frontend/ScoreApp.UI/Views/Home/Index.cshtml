@@ -21,11 +21,17 @@
                 <ul class="nav navbar-nav" ng-show="user.authenticated">
                     <li><a href="/Votacao">Votação <span class="badge" ng-hide="scoresToVote == 0">{{scoresToVote}}</span></a></li>
                 </ul>
-                <ul class="nav pull-right">
+                <ul class="nav pull-right" style="margin-right:10px;" ng-show="user.authenticated">
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{user.first_name}}</a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <img class="nav-user-photo" ua-facebook-picture />
+                            <span class="user-info">
+                                {{user.first_name}}
+                            </span>
+                            <i class="fa fa-caret-down"></i>
+                        </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" ua-logout>Logout</a></li>
+                            <li><a href="#" ua-logout><i class="fa fa-power-off"></i>Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -43,6 +49,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.6.2/angular-moment.min.js"></script>
     <script src="//app.userapp.io/js/userapp.client.js"></script>
     <script src="//app.userapp.io/js/angularjs.userapp.js"></script>
+    <script src="app/lib/ua-facebook-picture.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="app/lib/ui-bootstrap-tpls-0.10.0.min.js"></script>
     <script src="app/lib/underscore-1.6-min.js"></script>

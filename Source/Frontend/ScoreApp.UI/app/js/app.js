@@ -5,7 +5,7 @@ var underscore = angular.module('underscore', [])
         return window._;
     });
 
-var scoreApp = angular.module('scoreApp', ['ngRoute', 'angularMoment', 'UserApp', 'ui.bootstrap', 'underscore'])
+var scoreApp = angular.module('scoreApp', ['ngRoute', 'angularMoment', 'UserApp', 'UserApp.facebook-picture', 'ui.bootstrap', 'underscore'])
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider.when('/Votacao', { templateUrl: '/app/partials/Voting.html', controller: 'VotingController' });
         $routeProvider.when('/Home', { templateUrl: '/app/partials/Home.html', public: true });

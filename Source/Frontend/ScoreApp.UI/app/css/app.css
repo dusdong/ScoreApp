@@ -2,7 +2,9 @@
     padding-top: 70px;
 }
 
-.ng-cloak { display:none; }
+.ng-cloak {
+    display: none;
+}
 
 div.score {
     border-bottom: 1px dotted #d0d8e0;
@@ -65,3 +67,23 @@ img.red {
     img.red:hover {
         -webkit-filter: opacity(0.6);
     }
+
+.user-info {
+    max-width: 100px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    vertical-align: top;
+    line-height: 15px;
+    position: relative;
+    top: 6px;
+}
+
+.nav-user-photo {
+    margin: -4px 8px 0 0;
+    border-radius: 100%;
+    border: 2px solid #b4b8ff;
+    max-width: 40px !important;
+}
