@@ -28,3 +28,4 @@ In order to run the project in development environment, a few actions must be ta
 3. Add a mapping to *hosts* file at *C:\Windows\System32\drivers\etc\hosts*:
 
         127.0.0.1	awesomescoreapp.com
+4. Run scripts in *MySQL* local instance.
