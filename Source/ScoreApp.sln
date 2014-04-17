@@ -9,6 +9,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{F420
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreApp.UI", "Frontend\ScoreApp.UI\ScoreApp.UI.csproj", "{ABF31D82-9131-4DD6-AD4C-B88DF7FA28D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreApp.Domain", "Backend\ScoreApp.Domain\ScoreApp.Domain.csproj", "{903E4FDA-6820-4B69-92DA-F5AB5DBACE36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreApp.Infrastructure.Data", "Backend\ScoreApp.Infrastructure.Data\ScoreApp.Infrastructure.Data.csproj", "{F460CD4E-F06B-405A-A45C-EC5764A07B97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CEA3C058-A6B8-4233-B650-A446335747D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreApp.Tests", "Tests\ScoreApp.Tests\ScoreApp.Tests.csproj", "{8624D912-A61A-4C50-972D-7B71D9B1D9A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreApp.Infrastructure.Caching", "Backend\ScoreApp.Infrastructure.Caching\ScoreApp.Infrastructure.Caching.csproj", "{09ABBDE6-FC21-4F32-842B-5E32C2F3995D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreApp.Application", "Backend\ScoreApp.Application\ScoreApp.Application.csproj", "{53EA7CBA-2821-4B8B-B18F-1BFEDA05EE3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,11 +31,36 @@ Global
 		{ABF31D82-9131-4DD6-AD4C-B88DF7FA28D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABF31D82-9131-4DD6-AD4C-B88DF7FA28D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABF31D82-9131-4DD6-AD4C-B88DF7FA28D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{903E4FDA-6820-4B69-92DA-F5AB5DBACE36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{903E4FDA-6820-4B69-92DA-F5AB5DBACE36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{903E4FDA-6820-4B69-92DA-F5AB5DBACE36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{903E4FDA-6820-4B69-92DA-F5AB5DBACE36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F460CD4E-F06B-405A-A45C-EC5764A07B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F460CD4E-F06B-405A-A45C-EC5764A07B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F460CD4E-F06B-405A-A45C-EC5764A07B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F460CD4E-F06B-405A-A45C-EC5764A07B97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8624D912-A61A-4C50-972D-7B71D9B1D9A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8624D912-A61A-4C50-972D-7B71D9B1D9A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8624D912-A61A-4C50-972D-7B71D9B1D9A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8624D912-A61A-4C50-972D-7B71D9B1D9A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09ABBDE6-FC21-4F32-842B-5E32C2F3995D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09ABBDE6-FC21-4F32-842B-5E32C2F3995D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09ABBDE6-FC21-4F32-842B-5E32C2F3995D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09ABBDE6-FC21-4F32-842B-5E32C2F3995D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53EA7CBA-2821-4B8B-B18F-1BFEDA05EE3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53EA7CBA-2821-4B8B-B18F-1BFEDA05EE3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53EA7CBA-2821-4B8B-B18F-1BFEDA05EE3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53EA7CBA-2821-4B8B-B18F-1BFEDA05EE3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{ABF31D82-9131-4DD6-AD4C-B88DF7FA28D3} = {F39B50E2-4A8C-4C81-8521-A8EEC7D773FD}
+		{903E4FDA-6820-4B69-92DA-F5AB5DBACE36} = {F42048D4-4CC9-44B2-9998-B1476FED6D03}
+		{F460CD4E-F06B-405A-A45C-EC5764A07B97} = {F42048D4-4CC9-44B2-9998-B1476FED6D03}
+		{09ABBDE6-FC21-4F32-842B-5E32C2F3995D} = {F42048D4-4CC9-44B2-9998-B1476FED6D03}
+		{53EA7CBA-2821-4B8B-B18F-1BFEDA05EE3B} = {F42048D4-4CC9-44B2-9998-B1476FED6D03}
+		{8624D912-A61A-4C50-972D-7B71D9B1D9A5} = {CEA3C058-A6B8-4233-B650-A446335747D9}
 	EndGlobalSection
 EndGlobal
