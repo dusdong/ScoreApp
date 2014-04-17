@@ -23,7 +23,7 @@ namespace ScoreApp.Infrastructure.Caching
                 return (string)entry;
 
             var result = search.Search(userId);
-            cacheManager.Add(key, result, TimeSpan.FromDays(1));
+            cacheManager.Add(key, result, TimeSpan.FromDays(30)); //the image url is always be the same, even if the user changes it.
 
             return result;
         }
