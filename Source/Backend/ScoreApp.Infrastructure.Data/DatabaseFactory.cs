@@ -19,7 +19,7 @@ namespace ScoreApp.Infrastructure.Data
 
         public static void Setup()
         {
-            var mappings = FluentMappingConfiguration.Configure(new SaveScoreMapping());
+            var mappings = FluentMappingConfiguration.Configure(new SaveScoreMapping(), new QueryScoreMapping(), new ScoreWitnessMapping(), new VoteMapping());
 
             factory = NPoco.DatabaseFactory.Config(x =>
             {

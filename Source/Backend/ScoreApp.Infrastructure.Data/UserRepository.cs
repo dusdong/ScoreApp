@@ -28,6 +28,16 @@ namespace ScoreApp.Infrastructure.Data
             return users;
         }
 
+        public IEnumerable<User> GetByIds(string[] ids)
+        {
+            var users = new Collection<User>();
+            var result = userApp.User.Get(userId: ids, fields: new[] { "first_name", "last_name", "user_id" });
+            foreach (var apiUser in result)
+                users.Add(Convert(apiUser));
+
+            return users;
+        }
+
         private User Convert(dynamic apiUser)
         {
             return new User

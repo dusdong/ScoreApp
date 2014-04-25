@@ -11,7 +11,7 @@ namespace ScoreApp.Domain
         public User Creator { get; set; }
         public User Candidate { get; set; }
         public bool TimeUp { get; set; }
-        public IEnumerable<User> Voters { get; set; }
+        public IEnumerable<Voter> Voters { get; set; }
         public IEnumerable<User> Witnesses { get; set; }
     }
 }

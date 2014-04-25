@@ -7,10 +7,10 @@ var underscore = angular.module('underscore', [])
 
 var scoreApp = angular.module('scoreApp', ['ngRoute', 'angularMoment', 'UserApp', 'UserApp.facebook-picture', 'ui.bootstrap', 'underscore'])
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+        $routeProvider.when('/', { templateUrl: '/app/partials/Home.html', public: true });
         $routeProvider.when('/Votacao', { templateUrl: '/app/partials/Voting.html', controller: 'VotingController' });
-        $routeProvider.when('/Home', { templateUrl: '/app/partials/Home.html', public: true });
         $routeProvider.when('/Login', { templateUrl: '/app/partials/Login.html', login: true });
-        $routeProvider.otherwise({ redirectTo: '/Home' });
+        $routeProvider.otherwise({ redirectTo: '/' });
         $locationProvider.html5Mode(true);
     }])
     .run(['$window', '$rootScope', '$location', 'user', function ($window, $rootScope, $location, user) {
