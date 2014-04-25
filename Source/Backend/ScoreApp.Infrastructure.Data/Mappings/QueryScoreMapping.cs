@@ -8,7 +8,7 @@ namespace ScoreApp.Infrastructure.Data.Mappings
     {
         public QueryScoreMapping()
         {
-            TableName("Score");
+            TableName("scores");
         }
     }
 }

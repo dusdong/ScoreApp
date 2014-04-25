@@ -42,7 +42,11 @@
   <ItemGroup>
     <Compile Include="CachedImageSearch.cs" />
     <Compile Include="CachedUserRepository.cs" />
-    <Compile Include="CacheManager.cs" />
+    <Compile Include="Cache\CacheManager.cs" />
+    <Compile Include="Cache\CacheKey.cs" />
+    <Compile Include="Cache\CacheKeyBuilder.cs" />
+    <Compile Include="Cache\ICacheKeyBuilder.cs" />
+    <Compile Include="Cache\ICacheKeyParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

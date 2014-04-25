@@ -8,7 +8,7 @@ namespace ScoreApp.Infrastructure.Data.Mappings
         public SaveScoreMapping()
         {
             PrimaryKey(p => p.Id, autoIncrement: true)
-                .TableName("Scores")
+                .TableName("scores")
                 .Columns(x =>
                 {
                     x.Column(c => c.Witnesses).Ignore();

@@ -8,7 +8,7 @@ namespace ScoreApp.Infrastructure.Data.Mappings
         public VoteMapping()
         {
             CompositePrimaryKey(p => p.ScoreId, p => p.User)
-               .TableName("Votes");
+               .TableName("votes");
         }
     }
 }

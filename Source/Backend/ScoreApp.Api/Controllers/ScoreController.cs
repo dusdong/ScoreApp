@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace ScoreApp.Api.Controllers
 {
+    [RoutePrefix("scores")]
     public class ScoreController : ApiController
     {
         private readonly IScoreRepository scoreRepository;
@@ -21,8 +22,9 @@ namespace ScoreApp.Api.Controllers
             this.expirationCalculator = expirationCalculator;
         }
 
-        // GET api/<controller>
-        public IEnumerable<ExpirationScore> Get(bool timeUp)
+        [Route("")]
+        [HttpGet]
+        public IEnumerable<ExpirationScore> GetAll(bool timeUp = false)
         {
             var scores = scoreRepository.GetAll(timeUp);
             foreach (var score in scores)
@@ -32,27 +34,6 @@ namespace ScoreApp.Api.Controllers
                     ExpirationDate = expirationCalculator.Calculate(score.Date)
                 };
             }
-        }
-
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
         }
     }
 }

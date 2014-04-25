@@ -5,6 +5,11 @@ namespace ScoreApp.Api.Models
 {
     public class ExpirationScore : Score
     {
+        public ExpirationScore()
+        {
+
+        }
+
         public ExpirationScore(Score score)
         {
             Candidate = score.Candidate;

@@ -8,7 +8,7 @@ namespace ScoreApp.Infrastructure.Data.Mappings
         public ScoreWitnessMapping()
         {
             CompositePrimaryKey(p => p.ScoreId, p => p.Witness)
-               .TableName("ScoreWitnesses");
+               .TableName("scorewitnesses");
         }
     }
 }

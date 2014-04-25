@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using ScoreApp.Infrastructure.Data;
+using System.Web.Http;
 
 namespace ScoreApp.Api
 {
@@ -6,6 +7,7 @@ namespace ScoreApp.Api
     {
         protected void Application_Start()
         {
+            DatabaseFactory.Setup();
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
