@@ -15,6 +15,8 @@ Awesome ScoreApp
 * [angular-moment](https://github.com/urish/angular-moment)
 * [underscore](http://underscorejs.org/)
 * [userapp-angular](https://github.com/userapp-io/userapp-angular)
+* [angular-toaster](https://github.com/jirikavi/AngularJS-Toaster)
+* [angular-busy](https://github.com/cgross/angular-busy)
 
 ## Development
 In order to run the project in development environment, a few actions must be taken:
