@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 var underscore = angular.module('underscore', [])
-    .factory('_', function () {
+    .factory('underscore', function () {
         return window._;
     });
 
@@ -13,6 +13,9 @@ var scoreApp = angular.module('scoreApp', ['ngRoute', 'ngAnimate', 'angularMomen
         $routeProvider.otherwise({ redirectTo: '/' });
         $locationProvider.html5Mode(true);
     }])
+    .value('cgBusyDefaults', {
+        message: 'Awesome content is being fetched...'
+    })
     .run(['$window', '$rootScope', '$location', 'user', function ($window, $rootScope, $location, user) {
         $window.moment.lang('pt-BR');
         user.init({

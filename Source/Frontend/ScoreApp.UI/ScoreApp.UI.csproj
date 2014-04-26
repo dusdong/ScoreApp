@@ -111,6 +111,7 @@
     <Content Include="app\css\angular-busy.min.css" />
     <Content Include="app\css\bootstrap-social.css" />
     <Content Include="app\css\toaster.css" />
+    <Content Include="app\img\spinner.gif" />
     <Content Include="app\lib\angular-busy.min.js" />
     <Content Include="app\lib\angular-toaster.js" />
     <Content Include="app\lib\ua-facebook-picture.js" />

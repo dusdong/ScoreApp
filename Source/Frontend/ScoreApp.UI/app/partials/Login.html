@@ -1,9 +1,11 @@
-﻿<h1>Você precisa se autenticar</h1>
+﻿<div class="container">
+    <h1>Você precisa se autenticar</h1>
 
-<div class="center-block" style="width:23%">
-    <form ua-login>
-        <a href="#" class="btn btn-block btn-social btn-lg btn-facebook" ua-oauth-link="facebook" ua-oauth-redirect-uri="/Votacao"><i class="fa fa-facebook"></i>Entre com o Facebook</a>
-        <p ng-show="loading"><img src="https://app.userapp.io/img/ajax-loader-transparent.gif"></p>
-        <p ng-show="error">{{ error.message }}</p>
-    </form>
+    <div class="center-block" style="width:23%">
+        <form ua-login>
+            <a href="#" class="btn btn-block btn-social btn-lg btn-facebook" ua-oauth-link="facebook" ua-oauth-redirect-uri="/Votacao"><i class="fa fa-facebook"></i>Entre com o Facebook</a>
+            <p ng-show="loading"><img src="https://app.userapp.io/img/ajax-loader-transparent.gif"></p>
+            <p ng-show="error">{{ error.message }}</p>
+        </form>
+    </div>
 </div>

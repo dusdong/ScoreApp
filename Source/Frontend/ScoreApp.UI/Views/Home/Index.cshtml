@@ -14,41 +14,42 @@
     <link href="app/css/app.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar navbar-default navbar-fixed-top ng-cloak" role="navigation" ng-cloak ng-controller="MenuController">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Score App</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" ng-show="user.authenticated">
-                    <li><a href="/Votacao">Votação <span class="badge" ng-hide="scoresToVote == 0">{{scoresToVote}}</span></a></li>
-                </ul>
-                <ul class="nav pull-right" style="margin-right:10px;" ng-show="user.authenticated">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <img class="nav-user-photo" ua-facebook-picture />
-                            <span class="user-info">
-                                {{user.first_name}}
-                            </span>
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#" ua-logout><i class="fa fa-power-off"></i>Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        
-        <toaster-container></toaster-container>
 
-        <ng-view></ng-view>
+    <nav class="navbar navbar-default navbar-fixed-top ng-cloak" role="navigation" ng-cloak ng-controller="MenuController">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Score App</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" ng-show="user.authenticated">
+                <li><a href="/Votacao">Votação <span class="badge" ng-hide="scoresToVote == 0">{{scoresToVote}}</span></a></li>
+            </ul>
+            <ul class="nav pull-right" style="margin-right:10px;" ng-show="user.authenticated">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <img class="nav-user-photo" ua-facebook-picture />
+                        <span class="user-info">
+                            {{user.first_name}}
+                        </span>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" ua-logout><i class="fa fa-power-off"></i>Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    </div>
+
+    <ng-view></ng-view>
+
+    <toaster-container></toaster-container>
+
+    <footer></footer>
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-    <script src="//code.angularjs.org/1.2.16/angular-animate.min.js"></script> 
+    <script src="//code.angularjs.org/1.2.16/angular-animate.min.js"></script>
     <script src="app/lib/angular-route.min.js"></script>
     <script src="app/lib/moment-with-langs-2.5.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.6.2/angular-moment.min.js"></script>
