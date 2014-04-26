@@ -20,7 +20,7 @@ namespace ScoreApp.Application
                 if (item.ProviderId != "facebook")
                     continue;
 
-                return "http://graph.facebook.com/" + item.ProviderUserData.Id + "/picture";
+                return "http://graph.facebook.com/" + item.ProviderUserData.Id + "/picture?type=normal";
             }
 
             return null;

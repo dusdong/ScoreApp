@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-scoreApp.factory('scoreCalculator', function (_) {
+scoreApp.factory('scoreCalculator', ['underscore', function (_) {
     return {
         percentage: function (score) {
             var votersInFavor = _.filter(score.voters, function (voter) {
@@ -11,4 +11,4 @@ scoreApp.factory('scoreCalculator', function (_) {
             return percentage > 100 ? 100 : percentage;
         }
     };
-});
+}]);

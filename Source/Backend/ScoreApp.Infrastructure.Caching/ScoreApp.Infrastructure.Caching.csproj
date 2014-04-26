@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CachedImageSearch.cs" />
+    <Compile Include="CachedScoreRepository.cs" />
     <Compile Include="CachedUserRepository.cs" />
     <Compile Include="Cache\CacheManager.cs" />
     <Compile Include="Cache\CacheKey.cs" />

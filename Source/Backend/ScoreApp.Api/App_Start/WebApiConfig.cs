@@ -1,22 +1,31 @@
-﻿using ScoreApp.Application;
+﻿using Newtonsoft.Json.Serialization;
+using ScoreApp.Application;
 using ScoreApp.Domain;
+using ScoreApp.Domain.Factories;
 using ScoreApp.Domain.Services;
+using ScoreApp.Infrastructure.Caching;
 using ScoreApp.Infrastructure.Data;
 using SimpleInjector;
-using SimpleInjector.Integration.WebApi;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
 using SimpleInjector.Extensions;
-using ScoreApp.Infrastructure.Caching;
-using ScoreApp.Domain.Factories;
+using SimpleInjector.Integration.WebApi;
+using System.Linq;
+using System.Net.Http.Formatting;
+using System.Web.Http;
 
 namespace ScoreApp.Api
 {
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
+        {
+            ConfigureIoC(config);
+            ConfigureCamelCase(config);
+
+            // Web API attribute routes
+            config.MapHttpAttributeRoutes();
+        }
+
+        private static void ConfigureIoC(HttpConfiguration config)
         {
             //see https://simpleinjector.codeplex.com/wikipage?title=Web%20API%20Integration for more information.
             var container = new Container();
@@ -25,6 +34,7 @@ namespace ScoreApp.Api
             container.RegisterWebApiRequest<IScoreRepository, ScoreRepository>();
             container.RegisterWebApiRequest<IUserRepository, UserRepository>();
             container.RegisterDecorator(typeof(IUserRepository), typeof(CachedUserRepository));
+            container.RegisterDecorator(typeof(IScoreRepository), typeof(CachedScoreRepository));
             container.RegisterDecorator(typeof(IImageSearch), typeof(CachedImageSearch));
             container.Register<IExpirationDateCalculator, ExpirationDateCalculator>(Lifestyle.Singleton);
             container.Register<IImageSearch, ImageSearch>(Lifestyle.Singleton);
@@ -34,15 +44,12 @@ namespace ScoreApp.Api
             container.Verify();
 #endif
             config.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
+        }
 
-            // Web API routes
-            config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+        private static void ConfigureCamelCase(HttpConfiguration config)
+        {
+            var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
+            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
 }

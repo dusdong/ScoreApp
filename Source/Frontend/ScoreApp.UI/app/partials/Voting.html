@@ -1,9 +1,11 @@
 ﻿<h1>Candidatos</h1>
 <hr />
 
+<div cg-busy="scoresPromise"></div>
+
 <div class="row score" style="position:relative" ng-repeat="score in scores">
     <div class="col-md-2">
-        <img class="avatar center-block" title="{{score.candidate.name}}" ng-src="{{score.candidate.avatar}}" />
+        <img class="avatar center-block" title="{{score.candidate.fullName}}" ng-src="{{score.candidate.image}}" />
         <div class="btn-group center-block">
             <button type="button" class="btn btn-default btn-sm" ng-click="vote(score.id, 'yes')"><i class="fa fa-thumbs-up"></i></button>
             <button type="button" class="btn btn-default btn-sm" ng-click="vote(score.id, 'no')"><i class="fa fa-thumbs-down"></i></button>
@@ -11,13 +13,13 @@
         <progressbar style="height:5px" class="progress-striped active" type="{{score | progressType}}" value="score | scoreProgress" title="{{score | scoreProgress}}%"></progressbar>
     </div>
     <div class="col-md-8" style="position:static;">
-        <h4 class="candidate">{{score.candidate.name}}</h4>
+        <h4 class="candidate">{{score.candidate.fullName}}</h4>
         <p class="text-justify">{{score.reason}}</p>
 
         <time class="pull-right" style="position:absolute;bottom:0;right:0;margin-bottom:2px;margin-right:4px;" am-time-ago="score.date"></time>
         <div style="position:absolute;bottom:0;margin-bottom:2px;">
             <div class="pull-left" ng-repeat="voter in score.voters" style="position:relative;">
-                <img class="small-avatar {{voter | voterColor}}" title="{{voter.name}}" ng-src="{{voter.avatar}}" />
+                <img class="small-avatar {{voter | voterColor}}" title="{{voter.firstName}}" ng-src="{{voter.image}}" />
             </div>
         </div>
     </div>

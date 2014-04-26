@@ -9,6 +9,8 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" />
     <link href="app/css/bootstrap-social.css" rel="stylesheet" />
+    <link href="app/css/angular-busy.min.css" rel="stylesheet" />
+    <link href="app/css/toaster.css" rel="stylesheet" />
     <link href="app/css/app.css" rel="stylesheet" />
 </head>
 <body>
@@ -37,6 +39,8 @@
                 </ul>
             </div>
         </nav>
+        
+        <toaster-container></toaster-container>
 
         <ng-view></ng-view>
 
@@ -44,9 +48,12 @@
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.2.16/angular-animate.min.js"></script> 
     <script src="app/lib/angular-route.min.js"></script>
     <script src="app/lib/moment-with-langs-2.5.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.6.2/angular-moment.min.js"></script>
+    <script src="app/lib/angular-busy.min.js"></script>
+    <script src="app/lib/angular-toaster.js"></script>
     <script src="//app.userapp.io/js/userapp.client.js"></script>
     <script src="//app.userapp.io/js/angularjs.userapp.js"></script>
     <script src="app/lib/ua-facebook-picture.js"></script>
