@@ -17,6 +17,7 @@ Awesome ScoreApp
 * [userapp-angular](https://github.com/userapp-io/userapp-angular)
 * [angular-toaster](https://github.com/jirikavi/AngularJS-Toaster)
 * [angular-busy](https://github.com/cgross/angular-busy)
+* [countdown](https://github.com/rendro/countdown)
 
 ## Development
 In order to run the project in development environment, a few actions must be taken:
