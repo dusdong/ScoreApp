@@ -1,11 +1,6 @@
 ﻿using ScoreApp.Api.Models;
 using ScoreApp.Domain;
-using ScoreApp.Domain.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace ScoreApp.Api.Controllers
@@ -14,12 +9,10 @@ namespace ScoreApp.Api.Controllers
     public class ScoreController : ApiController
     {
         private readonly IScoreRepository scoreRepository;
-        private readonly IExpirationDateCalculator expirationCalculator;
 
-        public ScoreController(IScoreRepository scoreRepository, IExpirationDateCalculator expirationCalculator)
+        public ScoreController(IScoreRepository scoreRepository)
         {
             this.scoreRepository = scoreRepository;
-            this.expirationCalculator = expirationCalculator;
         }
 
         [Route("")]
@@ -29,10 +22,7 @@ namespace ScoreApp.Api.Controllers
             var scores = scoreRepository.GetAll(timeUp);
             foreach (var score in scores)
             {
-                yield return new ExpirationScore(score)
-                {
-                    ExpirationDate = expirationCalculator.Calculate(score.Date)
-                };
+                yield return new ExpirationScore(score);
             }
         }
     }

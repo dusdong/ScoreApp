@@ -36,7 +36,6 @@ namespace ScoreApp.Api
             container.RegisterDecorator(typeof(IUserRepository), typeof(CachedUserRepository));
             container.RegisterDecorator(typeof(IScoreRepository), typeof(CachedScoreRepository));
             container.RegisterDecorator(typeof(IImageSearch), typeof(CachedImageSearch));
-            container.Register<IExpirationDateCalculator, ExpirationDateCalculator>(Lifestyle.Singleton);
             container.Register<IImageSearch, ImageSearch>(Lifestyle.Singleton);
             container.Register<ISettings, SettingsAdapter>(Lifestyle.Singleton);
             container.Register<IUserAppFactory, UserAppFactory>(Lifestyle.Singleton);

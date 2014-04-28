@@ -1,11 +1,5 @@
 ﻿"use strict";
 
-scoreApp.filter('scoreProgress', ['scoreCalculator', function (scoreCalculator) {
-    return function (score) {
-        return scoreCalculator.percentage(score);
-    }
-}]);
-
 scoreApp.filter('progressType', ['scoreCalculator', function (scoreCalculator) {
     return function (score) {
         var percentage = scoreCalculator.percentage(score);
@@ -19,9 +13,3 @@ scoreApp.filter('progressType', ['scoreCalculator', function (scoreCalculator) {
         return 'danger';
     }
 }]);
-
-scoreApp.filter('voterColor', function () {
-    return function (voter) {
-        return voter.isInFavor ? 'green' : 'red';
-    }
-});

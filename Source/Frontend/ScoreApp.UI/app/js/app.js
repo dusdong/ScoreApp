@@ -19,6 +19,7 @@ var scoreApp = angular.module('scoreApp', ['ngRoute', 'ngAnimate', 'angularMomen
     .run(['$window', '$rootScope', '$location', 'user', function ($window, $rootScope, $location, user) {
         $window.moment.lang('pt-BR');
         user.init({
-            appId: '534db88a7c34a'
+            appId: '534db88a7c34a',
+            heartbeatInterval: 0
         });
     }]);

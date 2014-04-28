@@ -20,8 +20,9 @@ namespace ScoreApp.Api.Models
             TimeUp = score.TimeUp;
             Voters = score.Voters;
             Witnesses = score.Witnesses;
+            SecondsToExpire = TimeSpan.FromMinutes(5).TotalSeconds; //TODO: get TimeSpan from admin parameters
         }
 
-        public DateTime ExpirationDate { get; set; }
+        public double SecondsToExpire { get; set; }
     }
 }

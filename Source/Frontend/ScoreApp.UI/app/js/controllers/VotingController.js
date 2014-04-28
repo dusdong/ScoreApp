@@ -9,7 +9,6 @@ scoreApp.controller('VotingController', ['$scope', 'scoreData', 'toaster', funct
         toaster.pop('error', '', 'Sorry, but an error occured');
     });
 
-    $scope.scores = scoreData.getAll();
     $scope.vote = function (scoreId, vote) {
 
     };

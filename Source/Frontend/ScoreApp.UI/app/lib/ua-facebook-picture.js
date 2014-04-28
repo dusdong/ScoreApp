@@ -21,7 +21,7 @@ angular.module('UserApp.facebook-picture', []).
 	                    if (!error) {
 	                        for (var i = 0; i < result.items.length; ++i) {
 	                            if (result.items[i].provider_id == 'facebook') {
-	                                var url = 'http://graph.facebook.com/' + result.items[i].provider_user_data.id + '/picture'; debugger;
+	                                var url = 'http://graph.facebook.com/' + result.items[i].provider_user_data.id + '/picture';
 	                                user.avatarCache[user.current.user_id] = url;
 	                                callback(url);
 	                                return;

@@ -112,8 +112,13 @@
     <Content Include="app\css\bootstrap-social.css" />
     <Content Include="app\css\toaster.css" />
     <Content Include="app\img\spinner.gif" />
+    <Content Include="app\js\directives\countdown.js" />
+    <Content Include="app\js\filters\progressType.js" />
+    <Content Include="app\js\filters\scoreProgress.js" />
+    <Content Include="app\js\filters\voterColor.js" />
     <Content Include="app\lib\angular-busy.min.js" />
     <Content Include="app\lib\angular-toaster.js" />
+    <Content Include="app\lib\jquery.countdown.js" />
     <Content Include="app\lib\ua-facebook-picture.js" />
     <Content Include="app\partials\Home.html" />
     <Content Include="app\partials\Login.html" />
@@ -135,7 +140,6 @@
     <Content Include="app\js\app.js" />
     <Content Include="app\js\controllers\MenuController.js" />
     <Content Include="app\js\controllers\VotingController.js" />
-    <Content Include="app\js\filters.js" />
     <Content Include="app\js\services\scoreCalculator.js" />
     <Content Include="app\js\services\scoreData.js" />
     <Content Include="app\lib\angular-route.min.js" />
@@ -162,6 +166,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
