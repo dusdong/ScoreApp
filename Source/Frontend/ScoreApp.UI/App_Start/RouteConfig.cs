@@ -10,17 +10,6 @@ namespace ScoreApp.UI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-               name: "Votacao",
-               url: "Votacao/{action}",
-               defaults: new { controller = "Home", action = "Index" }
-           );
-            routes.MapRoute(
-               name: "Login",
-               url: "Login",
-               defaults: new { controller = "Home", action = "Index" }
-           );
-
-            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
                 defaults: new { controller = "Home", action = "Index" }

@@ -17,11 +17,11 @@
 
     <nav class="navbar navbar-default navbar-fixed-top ng-cloak" role="navigation" ng-cloak ng-controller="MenuController">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">Score App</a>
+            <a class="navbar-brand" href="#/">Score App</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav" ng-show="user.authenticated">
-                <li><a href="/Votacao">Votação <span class="badge" ng-hide="scoresToVote == 0">{{scoresToVote}}</span></a></li>
+                <li><a href="#/Votacao">Votação <span class="badge" ng-hide="scoresToVote == 0">{{scoresToVote}}</span></a></li>
             </ul>
             <ul class="nav pull-right" style="margin-right:10px;" ng-show="user.authenticated">
                 <li class="dropdown">
