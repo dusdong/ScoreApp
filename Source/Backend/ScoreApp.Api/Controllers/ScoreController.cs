@@ -5,6 +5,7 @@ using System.Web.Http;
 
 namespace ScoreApp.Api.Controllers
 {
+    [UserAppAuthorize]
     [RoutePrefix("scores")]
     public class ScoreController : ApiController
     {

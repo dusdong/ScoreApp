@@ -11,11 +11,13 @@ namespace ScoreApp.Infrastructure.Caching
         private const string allUsersKey = "All Users";
         private const string prefixUser = "User_";
         private readonly CacheManager cacheManager;
+        private readonly CacheKeyBuilder keyBuilder;
         private readonly IUserRepository repository;
 
         public CachedUserRepository(IUserRepository repository)
         {
             this.repository = repository;
+            keyBuilder = new CacheKeyBuilder();
             cacheManager = CacheManager.Instance;
         }
 
@@ -144,6 +146,20 @@ namespace ScoreApp.Infrastructure.Caching
         {
             key = key ?? prefixUser + user.Id;
             cacheManager.Add(key, user, TimeSpan.FromDays(1));
+        }
+
+        public User GetByToken(string token)
+        {
+            var key = keyBuilder.Create(GetType()).With(token).Build();
+            var entry = cacheManager.Get(key);
+            if (entry != null)
+                return (User)entry;
+
+            var result = repository.GetByToken(token);
+            if (result != null)
+                cacheManager.Add(key, result, TimeSpan.FromSeconds(30));
+
+            return result;
         }
     }
 }

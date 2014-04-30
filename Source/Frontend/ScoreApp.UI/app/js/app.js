@@ -16,7 +16,7 @@ var scoreApp = angular.module('scoreApp', ['ngRoute', 'ngAnimate', 'angularMomen
     .value('cgBusyDefaults', {
         message: 'Awesome content is being fetched...'
     })
-    .run(['$window', '$rootScope', '$location', 'user', function ($window, $rootScope, $location, user) {
+    .run(['$window', 'user', function ($window, user) {
         $window.moment.lang('pt-BR');
         user.init({
             appId: '534db88a7c34a',

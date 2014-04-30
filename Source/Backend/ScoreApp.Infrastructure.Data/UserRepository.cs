@@ -4,16 +4,19 @@ using ScoreApp.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using UserApp.Exceptions;
 
 namespace ScoreApp.Infrastructure.Data
 {
     public class UserRepository : IUserRepository
     {
+        private readonly IUserAppFactory userAppFactory;
         private readonly IImageSearch imageSearch;
         private readonly dynamic userApp;
 
         public UserRepository(IUserAppFactory userAppFactory, IImageSearch imageSearch)
         {
+            this.userAppFactory = userAppFactory;
             this.imageSearch = imageSearch;
             userApp = userAppFactory.Create();
         }
@@ -56,6 +59,20 @@ namespace ScoreApp.Infrastructure.Data
                 throw new ArgumentException(string.Format("Não foi possível encontrar o usuário com ID: {0}", id));
 
             return Convert(result[0]);
+        }
+
+        public User GetByToken(string token)
+        {
+            try
+            {
+                var app = userAppFactory.Create(token);
+                var result = app.User.Get(userId: "self");
+                return Convert(result[0]);
+            }
+            catch (ServiceException ex)
+            {
+                return null;
+            }
         }
     }
 }

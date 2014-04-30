@@ -13,9 +13,9 @@ namespace ScoreApp.Application
             this.settings = settings;
         }
 
-        public dynamic Create()
+        public dynamic Create(string token = null)
         {
-            return new API(settings.AppId, settings.AuthenticationToken);
+            return new API(settings.AppId, token ?? settings.AuthenticationToken);
         }
     }
 }

@@ -29,8 +29,9 @@ namespace ScoreApp.Api
         {
             //see https://simpleinjector.codeplex.com/wikipage?title=Web%20API%20Integration for more information.
             var container = new Container();
-            //var webApiLifestyle = new WebApiRequestLifestyle();
+            container.Options.PropertySelectionBehavior = new SimpleInjectorPropertySelectionBehavior();
             container.RegisterWebApiControllers(config);
+            container.RegisterWebApiFilterProvider(config);
             container.RegisterWebApiRequest<IScoreRepository, ScoreRepository>();
             container.RegisterWebApiRequest<IUserRepository, UserRepository>();
             container.RegisterDecorator(typeof(IUserRepository), typeof(CachedUserRepository));

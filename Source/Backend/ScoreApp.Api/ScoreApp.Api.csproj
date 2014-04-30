@@ -102,8 +102,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="SimpleInjectorPropertySelectionBehavior.cs" />
     <Compile Include="Models\ExpirationScore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleInjectorPropertyAttribute.cs" />
+    <Compile Include="UserAppAuthorizeAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

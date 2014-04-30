@@ -7,5 +7,6 @@ namespace ScoreApp.Domain
         IEnumerable<User> GetAll();
         IEnumerable<User> GetByIds(string[] ids);
         User GetById(string id);
+        User GetByToken(string token);
     }
 }
