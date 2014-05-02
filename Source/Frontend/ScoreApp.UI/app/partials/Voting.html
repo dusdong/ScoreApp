@@ -20,7 +20,7 @@
             <time class="pull-right" style="position:absolute;bottom:0;right:0;margin-bottom:2px;margin-right:4px;" am-time-ago="score.date"></time>
             <div style="position:absolute;bottom:0;margin-bottom:2px;">
                 <div class="pull-left" ng-repeat="voter in score.voters" style="position:relative;">
-                    <img class="small-avatar {{voter | voterColor}}" title="{{voter.firstName}}" ng-src="{{voter.image}}" />
+                    <img class="small-avatar" title="{{voter.firstName}}" ng-src="{{voter.image}}" ng-class="{true: 'green', false: 'red'}[voter.isInFavor]" />
                 </div>
             </div>
         </div>
