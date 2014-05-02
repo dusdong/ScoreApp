@@ -11,7 +11,7 @@
                 <button type="button" class="btn btn-default btn-sm" ng-click="vote(score.id, 'yes')"><i class="fa fa-thumbs-up"></i></button>
                 <button type="button" class="btn btn-default btn-sm" ng-click="vote(score.id, 'no')"><i class="fa fa-thumbs-down"></i></button>
             </div>
-            <progressbar style="height:5px" class="progress-striped active" type="{{score | progressType}}" value="score | scoreProgress" title="{{score | scoreProgress}}%"></progressbar>
+            <progressbar class="progress-striped active" type="{{score | progressType}}" value="score | scoreProgress">{{score | scoreProgress}}%</progressbar>
         </div>
         <div class="col-md-8" style="position:static;">
             <h4 class="candidate">{{score.candidate.fullName}}</h4>
