@@ -8,8 +8,8 @@
         <div class="col-md-2">
             <img class="avatar center-block" title="{{score.candidate.fullName}}" ng-src="{{score.candidate.image}}" />
             <div class="btn-group center-block">
-                <button type="button" class="btn btn-default btn-sm" ng-click="vote(score.id, 'yes')"><i class="fa fa-thumbs-up"></i></button>
-                <button type="button" class="btn btn-default btn-sm" ng-click="vote(score.id, 'no')"><i class="fa fa-thumbs-down"></i></button>
+                <button type="button" class="btn btn-default btn-sm" ng-disabled="candidateIsLoggedUser(score.candidate)" ng-click="vote(score.id, 'yes')"><i class="fa fa-thumbs-up"></i></button>
+                <button type="button" class="btn btn-default btn-sm" ng-disabled="candidateIsLoggedUser(score.candidate)" ng-click="vote(score.id, 'no')"><i class="fa fa-thumbs-down"></i></button>
             </div>
             <progressbar class="progress-striped active" type="{{score | progressType}}" value="score | scoreProgress">{{score | scoreProgress}}%</progressbar>
         </div>
