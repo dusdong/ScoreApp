@@ -20,8 +20,6 @@ namespace ScoreApp.Api
         {
             ConfigureIoC(config);
             ConfigureCamelCase(config);
-
-            // Web API attribute routes
             config.MapHttpAttributeRoutes();
         }
 
