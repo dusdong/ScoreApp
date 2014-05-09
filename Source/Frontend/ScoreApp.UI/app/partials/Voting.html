@@ -16,8 +16,10 @@
         <div class="col-md-8" style="position:static;">
             <h4 class="candidate">{{score.candidate.fullName}}</h4>
             <p class="text-justify">{{score.reason}}</p>
+
             <countdown class="pull-right" seconds-to-expire="score.secondsToExpire"></countdown>
             <time class="pull-right" style="position:absolute;bottom:0;right:0;margin-bottom:2px;margin-right:4px;" am-time-ago="score.date"></time>
+            <i class="fa fa-clock-o fa-lg pull-right" style="margin-right: 5px; margin-top: 3px;"></i>
             <div style="position:absolute;bottom:0;margin-bottom:2px;">
                 <div class="pull-left" ng-repeat="voter in score.voters" style="position:relative;">
                     <img class="small-avatar" title="{{voter.firstName}}" ng-src="{{voter.image}}" ng-class="{true: 'green', false: 'red'}[voter.isInFavor]" />
