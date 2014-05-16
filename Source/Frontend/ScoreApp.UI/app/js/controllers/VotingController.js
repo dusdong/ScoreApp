@@ -2,7 +2,7 @@
 
 scoreApp.controller('VotingController', ['$scope', 'scoreData', 'toaster', 'user', 'underscore', function ($scope, scoreData, toaster, user, _) {
     var promise = scoreData.getAll(false);
-    $scope.scoresPromise = promise;
+    $scope.promise = promise;
     promise.then(function (data) {
         $scope.scores = data;
     }, function (data) {

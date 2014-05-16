@@ -10,7 +10,7 @@ scoreApp.factory('scoreData', ['$http', '$q', function ($http, $q) {
             $http.get(url).success(function (data, status) {
                 deferred.resolve(data);
             }).error(function (data, status) {
-                deferred.reject(data);
+                deferred.reject(data, status);
             })
 
             return deferred.promise;

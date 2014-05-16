@@ -2,27 +2,27 @@
     <h1>Candidatos</h1>
     <hr />
 
-    <div cg-busy="scoresPromise"></div>
-
-    <div class="row score" style="position:relative" ng-repeat="score in scores">
-        <div class="col-md-2">
-            <img class="avatar center-block" title="{{score.candidate.fullName}}" ng-src="{{score.candidate.image}}" />
-            <div class="btn-group center-block">
-                <button type="button" class="btn btn-default btn-sm" ng-disabled="candidateIsLoggedUser(score.candidate)" ng-class="{true: 'green', false: 'red', default: ''}[loggedUserVote(score)]" ng-click="vote(score.id, 'yes')"><i class="fa fa-thumbs-up"></i></button>
-                <button type="button" class="btn btn-default btn-sm" ng-disabled="candidateIsLoggedUser(score.candidate)" ng-class="{true: 'green', false: 'red', default: ''}[loggedUserVote(score)]" ng-click="vote(score.id, 'no')"><i class="fa fa-thumbs-down"></i></button>
+    <div cg-busy="promise">
+        <div class="row score" style="position:relative" ng-repeat="score in scores">
+            <div class="col-md-2">
+                <img class="avatar center-block" title="{{score.candidate.fullName}}" ng-src="{{score.candidate.image}}" />
+                <div class="btn-group center-block">
+                    <button type="button" class="btn btn-default btn-sm" ng-disabled="candidateIsLoggedUser(score.candidate)" ng-class="{true: 'green', false: 'red', default: ''}[loggedUserVote(score)]" ng-click="vote(score.id, 'yes')"><i class="fa fa-thumbs-up"></i></button>
+                    <button type="button" class="btn btn-default btn-sm" ng-disabled="candidateIsLoggedUser(score.candidate)" ng-class="{true: 'green', false: 'red', default: ''}[loggedUserVote(score)]" ng-click="vote(score.id, 'no')"><i class="fa fa-thumbs-down"></i></button>
+                </div>
+                <progressbar class="progress-striped active" type="{{score | progressType}}" value="score | scoreProgress">{{score | scoreProgress}}%</progressbar>
             </div>
-            <progressbar class="progress-striped active" type="{{score | progressType}}" value="score | scoreProgress">{{score | scoreProgress}}%</progressbar>
-        </div>
-        <div class="col-md-8" style="position:static;">
-            <h4 class="candidate">{{score.candidate.fullName}}</h4>
-            <p class="text-justify">{{score.reason}}</p>
+            <div class="col-md-8" style="position:static;">
+                <h4 class="candidate">{{score.candidate.fullName}}</h4>
+                <p class="text-justify">{{score.reason}}</p>
 
-            <countdown class="pull-right" seconds-to-expire="score.secondsToExpire"></countdown>
-            <time class="pull-right" style="position:absolute;bottom:0;right:0;margin-bottom:2px;margin-right:4px;" am-time-ago="score.date"></time>
-            <i class="fa fa-clock-o fa-lg pull-right" style="margin-right: 5px; margin-top: 3px;"></i>
-            <div style="position:absolute;bottom:0;margin-bottom:2px;">
-                <div class="pull-left" ng-repeat="voter in score.voters" style="position:relative;">
-                    <img class="small-avatar" title="{{voter.firstName}}" ng-src="{{voter.image}}" ng-class="{true: 'green', false: 'red'}[voter.isInFavor]" />
+                <countdown class="pull-right" seconds-to-expire="score.secondsToExpire"></countdown>
+                <time class="pull-right" style="position:absolute;bottom:0;right:0;margin-bottom:2px;margin-right:4px;" am-time-ago="score.date"></time>
+                <i class="fa fa-clock-o fa-lg pull-right" style="margin-right: 5px; margin-top: 3px;"></i>
+                <div style="position:absolute;bottom:0;margin-bottom:2px;">
+                    <div class="pull-left" ng-repeat="voter in score.voters" style="position:relative;">
+                        <img class="small-avatar" title="{{voter.firstName}}" ng-src="{{voter.image}}" ng-class="{true: 'green', false: 'red'}[voter.isInFavor]" />
+                    </div>
                 </div>
             </div>
         </div>
