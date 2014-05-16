@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="Factories\IUserAppFactory.cs" />
     <Compile Include="Models\Score\IScoreRepository.cs" />
+    <Compile Include="Models\Shared\PagedResult.cs" />
+    <Compile Include="Models\Shared\Pagination.cs" />
     <Compile Include="Models\User\IUserRepository.cs" />
     <Compile Include="Models\Score\SaveScore.cs" />
     <Compile Include="Models\User\Voter.cs" />

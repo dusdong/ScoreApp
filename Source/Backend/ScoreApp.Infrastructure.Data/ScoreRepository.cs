@@ -1,12 +1,9 @@
-﻿using ScoreApp.Domain;
-using ScoreApp.Domain.Services;
+﻿using NPoco;
+using ScoreApp.Domain;
 using ScoreApp.Infrastructure.Data.Models;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ScoreApp.Infrastructure.Data
 {
@@ -30,60 +27,44 @@ namespace ScoreApp.Infrastructure.Data
 
         public Score GetById(int id)
         {
-            throw new NotImplementedException();
+            using (var database = DatabaseFactory.GetDatabase())
+            {
+                var queryScore = database.SingleOrDefaultById<QueryScore>(id);
+                if (queryScore == null)
+                    return null;
+
+                var users = GetUsers(queryScore);
+                return queryScore.ToScore(users);
+            }
         }
 
-        public IEnumerable<Score> GetAll(bool timeUp = false)
+        private IEnumerable<User> GetUsers(params QueryScore[] queryScores)
+        {
+            var userIds = queryScores.Select(q => q.Candidate)
+                    .Concat(queryScores.Select(q => q.Creator))
+                    .Distinct();
+            return userRepository.GetByIds(userIds.ToArray());
+        }
+
+        public PagedResult<Score> GetAll(Pagination pagination, bool timeUp = false)
         {
             var scores = new Collection<Score>();
             using (var database = DatabaseFactory.GetDatabase())
             {
-                var queryScores = database.FetchWhere<QueryScore>(s => s.TimeUp == timeUp);
-                var scoreIds = string.Join(",", queryScores.Select(s => s.Id).ToArray());
-                var witnesses = database.Fetch<ScoreWitness>("WHERE ScoreId IN (@0)", scoreIds);
-                var votes = database.Fetch<Vote>("WHERE ScoreId IN (@0)", scoreIds);
+                var page = database.Page<QueryScore>(pagination.Page, pagination.ItemsPerPage, Sql.Builder.Where("TimeUp = @0", timeUp).OrderBy("Date DESC"));
+                var users = GetUsers(page.Items.ToArray());
 
-                var userIds = queryScores.Select(q => q.Candidate)
-                    .Concat(queryScores.Select(q => q.Creator))
-                    .Concat(witnesses.Select(w => w.Witness))
-                    .Concat(votes.Select(v => v.User))
-                    .Distinct();
-                var users = userRepository.GetByIds(userIds.ToArray());
+                foreach (var queryScore in page.Items)
+                    scores.Add(queryScore.ToScore(users));
 
-                foreach (var queryScore in queryScores)
+                return new PagedResult<Score>
                 {
-                    var score = new Score
-                    {
-                        Candidate = users.First(u => u.Id == queryScore.Candidate),
-                        Creator = users.First(u => u.Id == queryScore.Creator),
-                        Date = queryScore.Date,
-                        Id = queryScore.Id,
-                        Reason = queryScore.Reason,
-                        TimeUp = queryScore.TimeUp,
-                        Voters = GetVoters(votes.Where(v => v.ScoreId == queryScore.Id), users).ToList(),
-                        Witnesses = witnesses.Where(w => w.ScoreId == queryScore.Id).Select(w => users.First(u => u.Id == w.Witness)).ToList()
-                    };
-                    scores.Add(score);
-                }
-            }
-
-            return scores;
-        }
-
-        private IEnumerable<Voter> GetVoters(IEnumerable<Vote> votes, IEnumerable<User> users)
-        {
-            foreach (var vote in votes)
-            {
-                yield return new Voter(users.First(u => u.Id == vote.User))
-                {
-                    IsInFavor = vote.IsInFavor
+                    Items = scores,
+                    ItemsPerPage = (int)page.ItemsPerPage,
+                    CurrentPage = (int)page.CurrentPage,
+                    TotalItems = (int)page.TotalItems
                 };
             }
-        }
-
-        public void TimedUp(int scoreId)
-        {
-            throw new NotImplementedException();
         }
     }
 }

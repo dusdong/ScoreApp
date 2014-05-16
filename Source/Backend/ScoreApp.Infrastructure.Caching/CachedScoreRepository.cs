@@ -22,24 +22,19 @@ namespace ScoreApp.Infrastructure.Caching
             repository.Save(score);
         }
 
-        public void TimedUp(int scoreId)
-        {
-            repository.TimedUp(scoreId);
-        }
-
         public Score GetById(int id)
         {
             return repository.GetById(id);
         }
 
-        public IEnumerable<Score> GetAll(bool timeUp = false)
+        public PagedResult<Score> GetAll(Pagination pagination, bool timeUp = false)
         {
-            var key = keyBuilder.Create(GetType()).With(timeUp).Build();
+            var key = keyBuilder.Create(GetType()).With(pagination, timeUp).Build();
             var entry = cacheManager.Get(key);
             if (entry != null)
-                return (IEnumerable<Score>)entry;
+                return (PagedResult<Score>)entry;
 
-            var result = repository.GetAll(timeUp);
+            var result = repository.GetAll(pagination, timeUp);
             cacheManager.Add(key, result, TimeSpan.FromSeconds(2));
 
             return result;

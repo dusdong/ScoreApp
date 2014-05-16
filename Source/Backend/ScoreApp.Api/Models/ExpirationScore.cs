@@ -18,8 +18,6 @@ namespace ScoreApp.Api.Models
             Id = score.Id;
             Reason = score.Reason;
             TimeUp = score.TimeUp;
-            Voters = score.Voters;
-            Witnesses = score.Witnesses;
             SecondsToExpire = TimeSpan.FromMinutes(5).TotalSeconds; //TODO: get TimeSpan from admin parameters
         }
 

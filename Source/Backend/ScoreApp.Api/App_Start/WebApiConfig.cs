@@ -11,6 +11,8 @@ using SimpleInjector.Integration.WebApi;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web.Http;
+using System.Web.Http.ModelBinding;
+using System.Web.Http.ModelBinding.Binders;
 
 namespace ScoreApp.Api
 {
@@ -20,7 +22,14 @@ namespace ScoreApp.Api
         {
             ConfigureIoC(config);
             ConfigureCamelCase(config);
+            ConfigureModelBinders(config);
             config.MapHttpAttributeRoutes();
+        }
+
+        private static void ConfigureModelBinders(HttpConfiguration config)
+        {
+            var provider = new SimpleModelBinderProvider(typeof(Pagination), new PaginationBinder());
+            config.Services.Insert(typeof(ModelBinderProvider), 0, provider);
         }
 
         private static void ConfigureIoC(HttpConfiguration config)
