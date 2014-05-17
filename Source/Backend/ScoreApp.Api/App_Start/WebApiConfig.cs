@@ -36,6 +36,7 @@ namespace ScoreApp.Api
             container.RegisterWebApiRequest<IScoreRepository, ScoreRepository>();
             container.RegisterWebApiRequest<IUserRepository, UserRepository>();
             container.RegisterWebApiRequest<IScoreWitnessRepository, ScoreWitnessRepository>();
+            container.RegisterWebApiRequest<IVoterRepository, VoterRepository>();
             container.RegisterDecorator(typeof(IUserRepository), typeof(CachedUserRepository));
             container.RegisterDecorator(typeof(IScoreRepository), typeof(CachedScoreRepository)); //CachedScoreRepository wraps ScoreRepository.
             container.RegisterDecorator(typeof(IScoreRepository), typeof(ExpirationScoreRepository)); //ExpirationScoreRepository wraps CachedScoreRepository.

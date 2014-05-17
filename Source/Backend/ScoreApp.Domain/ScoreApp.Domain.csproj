@@ -47,7 +47,8 @@
     <Compile Include="Models\Shared\Pagination.cs" />
     <Compile Include="Models\User\IUserRepository.cs" />
     <Compile Include="Models\Score\SaveScore.cs" />
-    <Compile Include="Models\User\Voter.cs" />
+    <Compile Include="Models\Voter\IVoterRepository.cs" />
+    <Compile Include="Models\Voter\Voter.cs" />
     <Compile Include="Models\ScoreWitness\IScoreWitnessRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Score\Score.cs" />

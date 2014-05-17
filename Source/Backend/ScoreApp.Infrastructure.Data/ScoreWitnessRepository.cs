@@ -28,5 +28,13 @@ namespace ScoreApp.Infrastructure.Data
                 return GetUsers(witnesses.ToArray());
             }
         }
+
+        public void SaveWitnesses(int scoreId, IEnumerable<string> witnesses)
+        {
+            using (var database = DatabaseFactory.GetDatabase())
+            {
+                //TODO: insert or update accordingly...
+            }
+        }
     }
 }

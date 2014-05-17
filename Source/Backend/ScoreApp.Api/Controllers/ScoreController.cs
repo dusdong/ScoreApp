@@ -10,11 +10,13 @@ namespace ScoreApp.Api.Controllers
     {
         private readonly IScoreRepository scoreRepository;
         private readonly IScoreWitnessRepository scoreWitnessRepository;
+        private readonly IVoterRepository voterRepository;
 
-        public ScoreController(IScoreRepository scoreRepository, IScoreWitnessRepository scoreWitnessRepository)
+        public ScoreController(IScoreRepository scoreRepository, IScoreWitnessRepository scoreWitnessRepository, IVoterRepository voterRepository)
         {
             this.scoreRepository = scoreRepository;
             this.scoreWitnessRepository = scoreWitnessRepository;
+            this.voterRepository = voterRepository;
         }
 
         [Route("")]
@@ -42,6 +44,14 @@ namespace ScoreApp.Api.Controllers
         {
             var witnesses = scoreWitnessRepository.GetFromScore(scoreId);
             return Ok(witnesses);
+        }
+
+        [Route("{scoreId:int}/voters")]
+        [HttpGet]
+        public IHttpActionResult GetScoreVoters(int scoreId)
+        {
+            var voters = voterRepository.GetFromScore(scoreId);
+            return Ok(voters);
         }
     }
 }

@@ -65,6 +65,7 @@
     <Compile Include="ScoreRepository.cs" />
     <Compile Include="ScoreWitnessRepository.cs" />
     <Compile Include="UserRepository.cs" />
+    <Compile Include="VoterRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ScoreApp.Domain\ScoreApp.Domain.csproj">
