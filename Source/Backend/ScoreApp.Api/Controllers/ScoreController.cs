@@ -9,10 +9,12 @@ namespace ScoreApp.Api.Controllers
     public class ScoreController : ApiController
     {
         private readonly IScoreRepository scoreRepository;
+        private readonly IScoreWitnessRepository scoreWitnessRepository;
 
-        public ScoreController(IScoreRepository scoreRepository)
+        public ScoreController(IScoreRepository scoreRepository, IScoreWitnessRepository scoreWitnessRepository)
         {
             this.scoreRepository = scoreRepository;
+            this.scoreWitnessRepository = scoreWitnessRepository;
         }
 
         [Route("")]
@@ -23,15 +25,23 @@ namespace ScoreApp.Api.Controllers
             return Ok(paged);
         }
 
-        [Route("{id:int}")]
+        [Route("{scoreId:int}")]
         [HttpGet]
-        public IHttpActionResult GetById(int id)
+        public IHttpActionResult GetById(int scoreId)
         {
-            var score = scoreRepository.GetById(id);
+            var score = scoreRepository.GetById(scoreId);
             if (score == null)
                 return NotFound();
 
             return Ok(score);
+        }
+
+        [Route("{scoreId:int}/witnesses")]
+        [HttpGet]
+        public IHttpActionResult GetScoreWitnesses(int scoreId)
+        {
+            var witnesses = scoreWitnessRepository.GetFromScore(scoreId);
+            return Ok(witnesses);
         }
     }
 }
