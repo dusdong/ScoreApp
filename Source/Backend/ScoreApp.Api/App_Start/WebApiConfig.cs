@@ -26,15 +26,9 @@ namespace ScoreApp.Api
             config.MapHttpAttributeRoutes();
         }
 
-        private static void ConfigureModelBinders(HttpConfiguration config)
-        {
-            var provider = new SimpleModelBinderProvider(typeof(Pagination), new PaginationBinder());
-            config.Services.Insert(typeof(ModelBinderProvider), 0, provider);
-        }
-
         private static void ConfigureIoC(HttpConfiguration config)
         {
-            //see https://simpleinjector.codeplex.com/wikipage?title=Web%20API%20Integration for more information.
+            //See https://simpleinjector.codeplex.com/wikipage?title=Web%20API%20Integration for more information on SimpleInjector WebApi integration.
             var container = new Container();
             container.Options.PropertySelectionBehavior = new SimpleInjectorPropertySelectionBehavior();
             container.RegisterWebApiControllers(config);
@@ -42,11 +36,13 @@ namespace ScoreApp.Api
             container.RegisterWebApiRequest<IScoreRepository, ScoreRepository>();
             container.RegisterWebApiRequest<IUserRepository, UserRepository>();
             container.RegisterDecorator(typeof(IUserRepository), typeof(CachedUserRepository));
-            container.RegisterDecorator(typeof(IScoreRepository), typeof(CachedScoreRepository));
+            container.RegisterDecorator(typeof(IScoreRepository), typeof(CachedScoreRepository)); //CachedScoreRepository wraps ScoreRepository.
+            container.RegisterDecorator(typeof(IScoreRepository), typeof(ExpirationScoreRepository)); //ExpirationScoreRepository wraps CachedScoreRepository.
             container.RegisterDecorator(typeof(IImageSearch), typeof(CachedImageSearch));
             container.Register<IImageSearch, ImageSearch>(Lifestyle.Singleton);
             container.Register<ISettings, SettingsAdapter>(Lifestyle.Singleton);
             container.Register<IUserAppFactory, UserAppFactory>(Lifestyle.Singleton);
+            container.Register<IExpirationScoreFactory, ExpirationScoreFactory>(Lifestyle.Singleton);
 #if DEBUG
             container.Verify();
 #endif
@@ -57,6 +53,12 @@ namespace ScoreApp.Api
         {
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+        }
+
+        private static void ConfigureModelBinders(HttpConfiguration config)
+        {
+            var provider = new SimpleModelBinderProvider(typeof(Pagination), new PaginationBinder());
+            config.Services.Insert(typeof(ModelBinderProvider), 0, provider);
         }
     }
 }

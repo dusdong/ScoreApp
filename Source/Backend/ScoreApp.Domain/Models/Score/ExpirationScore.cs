@@ -1,13 +1,12 @@
-﻿using ScoreApp.Domain;
-using System;
+﻿using System;
 
-namespace ScoreApp.Api.Models
+namespace ScoreApp.Domain
 {
     public class ExpirationScore : Score
     {
         public ExpirationScore()
         {
-
+            //The serialize needs this parameterless constructor.
         }
 
         public ExpirationScore(Score score)
@@ -18,7 +17,6 @@ namespace ScoreApp.Api.Models
             Id = score.Id;
             Reason = score.Reason;
             TimeUp = score.TimeUp;
-            SecondsToExpire = TimeSpan.FromMinutes(5).TotalSeconds; //TODO: get TimeSpan from admin parameters
         }
 
         public double SecondsToExpire { get; set; }

@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseFactory.cs" />
+    <Compile Include="ExpirationScoreRepository.cs" />
     <Compile Include="Mappings\QueryScoreMapping.cs" />
     <Compile Include="Mappings\SaveScoreMapping.cs" />
     <Compile Include="Mappings\ScoreWitnessMapping.cs" />

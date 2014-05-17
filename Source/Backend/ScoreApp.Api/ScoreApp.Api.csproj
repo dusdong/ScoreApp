@@ -107,7 +107,6 @@
     </Compile>
     <Compile Include="PaginationBinder.cs" />
     <Compile Include="SimpleInjectorPropertySelectionBehavior.cs" />
-    <Compile Include="Models\ExpirationScore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleInjectorPropertyAttribute.cs" />
     <Compile Include="UserAppAuthorizeAttribute.cs" />

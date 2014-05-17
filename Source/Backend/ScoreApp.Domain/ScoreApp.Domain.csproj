@@ -39,7 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\IExpirationScoreFactory.cs" />
     <Compile Include="Factories\IUserAppFactory.cs" />
+    <Compile Include="Models\Score\ExpirationScore.cs" />
     <Compile Include="Models\Score\IScoreRepository.cs" />
     <Compile Include="Models\Shared\PagedResult.cs" />
     <Compile Include="Models\Shared\Pagination.cs" />

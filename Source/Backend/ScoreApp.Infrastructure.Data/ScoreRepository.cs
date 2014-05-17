@@ -46,7 +46,7 @@ namespace ScoreApp.Infrastructure.Data
             return userRepository.GetByIds(userIds.ToArray());
         }
 
-        public PagedResult<Score> GetAll(Pagination pagination, bool timeUp = false)
+        public IPagedResult<Score> GetAll(Pagination pagination, bool timeUp = false)
         {
             var scores = new Collection<Score>();
             using (var database = DatabaseFactory.GetDatabase())

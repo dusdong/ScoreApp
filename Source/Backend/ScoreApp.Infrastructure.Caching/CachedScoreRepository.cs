@@ -1,6 +1,5 @@
 ﻿using ScoreApp.Domain;
 using System;
-using System.Collections.Generic;
 
 namespace ScoreApp.Infrastructure.Caching
 {
@@ -27,12 +26,12 @@ namespace ScoreApp.Infrastructure.Caching
             return repository.GetById(id);
         }
 
-        public PagedResult<Score> GetAll(Pagination pagination, bool timeUp = false)
+        public IPagedResult<Score> GetAll(Pagination pagination, bool timeUp = false)
         {
             var key = keyBuilder.Create(GetType()).With(pagination, timeUp).Build();
             var entry = cacheManager.Get(key);
             if (entry != null)
-                return (PagedResult<Score>)entry;
+                return (IPagedResult<Score>)entry;
 
             var result = repository.GetAll(pagination, timeUp);
             cacheManager.Add(key, result, TimeSpan.FromSeconds(2));

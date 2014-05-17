@@ -6,6 +6,6 @@ namespace ScoreApp.Domain
     {
         void Save(SaveScore score);
         Score GetById(int id);
-        PagedResult<Score> GetAll(Pagination pagination, bool timeUp = false);
+        IPagedResult<Score> GetAll(Pagination pagination, bool timeUp = false);
     }
 }
