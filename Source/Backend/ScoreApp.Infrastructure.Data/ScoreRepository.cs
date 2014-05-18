@@ -10,9 +10,9 @@ namespace ScoreApp.Infrastructure.Data
     public class ScoreRepository : IScoreRepository
     {
         private readonly IUserRepository userRepository;
-        private readonly IScoreWitnessRepository scoreWitnessRepository;
+        private readonly IWitnessRepository scoreWitnessRepository;
 
-        public ScoreRepository(IUserRepository userRepository, IScoreWitnessRepository scoreWitnessRepository)
+        public ScoreRepository(IUserRepository userRepository, IWitnessRepository scoreWitnessRepository)
         {
             this.userRepository = userRepository;
             this.scoreWitnessRepository = scoreWitnessRepository;
@@ -23,7 +23,7 @@ namespace ScoreApp.Infrastructure.Data
             using (var database = DatabaseFactory.GetDatabase())
             {
                 database.Save<SaveScore>(score);
-                scoreWitnessRepository.SaveWitnesses(score.Id, score.Witnesses);
+                scoreWitnessRepository.Save(score.Id, score.Witnesses);
             }
         }
 

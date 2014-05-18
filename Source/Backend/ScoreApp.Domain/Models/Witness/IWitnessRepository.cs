@@ -2,9 +2,9 @@
 
 namespace ScoreApp.Domain
 {
-    public interface IScoreWitnessRepository
+    public interface IWitnessRepository
     {
         IEnumerable<User> GetFromScore(int scoreId);
-        void SaveWitnesses(int scoreId, IEnumerable<string> witnesses);
+        void Save(int scoreId, IEnumerable<string> witnesses);
     }
 }

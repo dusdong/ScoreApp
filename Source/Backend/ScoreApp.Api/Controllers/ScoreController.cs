@@ -9,13 +9,13 @@ namespace ScoreApp.Api.Controllers
     public class ScoreController : ApiController
     {
         private readonly IScoreRepository scoreRepository;
-        private readonly IScoreWitnessRepository scoreWitnessRepository;
+        private readonly IWitnessRepository witnessRepository;
         private readonly IVoterRepository voterRepository;
 
-        public ScoreController(IScoreRepository scoreRepository, IScoreWitnessRepository scoreWitnessRepository, IVoterRepository voterRepository)
+        public ScoreController(IScoreRepository scoreRepository, IWitnessRepository witnessRepository, IVoterRepository voterRepository)
         {
             this.scoreRepository = scoreRepository;
-            this.scoreWitnessRepository = scoreWitnessRepository;
+            this.witnessRepository = witnessRepository;
             this.voterRepository = voterRepository;
         }
 
@@ -42,7 +42,7 @@ namespace ScoreApp.Api.Controllers
         [HttpGet]
         public IHttpActionResult GetScoreWitnesses(int scoreId)
         {
-            var witnesses = scoreWitnessRepository.GetFromScore(scoreId);
+            var witnesses = witnessRepository.GetFromScore(scoreId);
             return Ok(witnesses);
         }
 

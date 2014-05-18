@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace ScoreApp.Infrastructure.Data
 {
-    public class ScoreWitnessRepository : IScoreWitnessRepository
+    public class WitnessRepository : IWitnessRepository
     {
         private readonly IUserRepository userRepository;
 
-        public ScoreWitnessRepository(IUserRepository userRepository)
+        public WitnessRepository(IUserRepository userRepository)
         {
             this.userRepository = userRepository;
         }
@@ -29,7 +29,7 @@ namespace ScoreApp.Infrastructure.Data
             }
         }
 
-        public void SaveWitnesses(int scoreId, IEnumerable<string> witnesses)
+        public void Save(int scoreId, IEnumerable<string> witnesses)
         {
             using (var database = DatabaseFactory.GetDatabase())
             {
