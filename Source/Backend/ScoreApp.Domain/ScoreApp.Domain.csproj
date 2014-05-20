@@ -49,6 +49,7 @@
     <Compile Include="Models\User\IUserRepository.cs" />
     <Compile Include="Models\Score\SaveScore.cs" />
     <Compile Include="Models\Voter\IVoterRepository.cs" />
+    <Compile Include="Models\Voter\Vote.cs" />
     <Compile Include="Models\Voter\Voter.cs" />
     <Compile Include="Models\Witness\IWitnessRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ScoreApp.Infrastructure.Data.Models
+namespace ScoreApp.Domain
 {
-    internal class Vote
+    public class Vote
     {
         public int ScoreId { get; set; }
         public string User { get; set; }

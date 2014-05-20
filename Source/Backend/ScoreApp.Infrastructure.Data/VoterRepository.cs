@@ -1,4 +1,5 @@
-﻿using ScoreApp.Domain;
+﻿using NPoco;
+using ScoreApp.Domain;
 using ScoreApp.Infrastructure.Data.Models;
 using System;
 using System.Collections.Generic;
@@ -29,16 +30,31 @@ namespace ScoreApp.Infrastructure.Data
                 yield return new Voter(users.First(u => u.Id == vote.User), vote.IsInFavor);
         }
 
-        public IEnumerable<Voter> GetFromScore(int scoreId)
+        public IEnumerable<Voter> GetFromScore(int scoreId, bool? isInFavor)
         {
             using (var database = DatabaseFactory.GetDatabase())
             {
                 if (!database.Exists<QueryScore>(scoreId))
                     throw new EntityNotFoundException("Ponto com Id {0} não encontrado", scoreId);
 
-                var votes = database.FetchWhere<Vote>(s => s.ScoreId == scoreId);
+                var query = Sql.Builder.Where("ScoreId = @0", scoreId);
+                if (isInFavor.HasValue)
+                    query.Where("IsInFavor = @0", isInFavor.Value);
+
+                var votes = database.Fetch<Vote>(query);
                 var users = GetUsers(votes.ToArray());
                 return GetVoters(votes, users).ToList();
+            }
+        }
+
+        public void SaveVote(Vote vote)
+        {
+            using (var database = DatabaseFactory.GetDatabase())
+            {
+                if (!database.Exists<QueryScore>(vote.ScoreId))
+                    throw new EntityNotFoundException("Ponto com Id {0} não encontrado", vote.ScoreId);
+
+                database.Save<Vote>(vote);
             }
         }
     }

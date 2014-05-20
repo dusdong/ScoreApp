@@ -1,5 +1,5 @@
 ﻿using NPoco.FluentMappings;
-using ScoreApp.Infrastructure.Data.Models;
+using ScoreApp.Domain;
 
 namespace ScoreApp.Infrastructure.Data.Mappings
 {

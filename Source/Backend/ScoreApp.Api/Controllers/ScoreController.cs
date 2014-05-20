@@ -1,4 +1,5 @@
 ﻿using ScoreApp.Domain;
+using System;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
 
@@ -55,11 +56,11 @@ namespace ScoreApp.Api.Controllers
 
         [Route("{scoreId:int}/voters")]
         [HttpGet]
-        public IHttpActionResult GetScoreVoters(int scoreId)
+        public IHttpActionResult GetScoreVoters(int scoreId, bool? isInFavor = null)
         {
             try
             {
-                var voters = voterRepository.GetFromScore(scoreId);
+                var voters = voterRepository.GetFromScore(scoreId, isInFavor);
                 return Ok(voters);
             }
             catch (EntityNotFoundException)
@@ -71,10 +72,24 @@ namespace ScoreApp.Api.Controllers
         [Route("{scoreId:int}/voters")]
         [HttpPost]
         [UserFilter]
-        public IHttpActionResult ApplyVote(User user, int scoreId, [FromBody] bool isInFavor)
+        public IHttpActionResult SaveVote(User user, int scoreId, bool isInFavor)
         {
-            var voters = voterRepository.GetFromScore(scoreId);
-            return Ok(voters);
+            try
+            {
+                var vote = new Vote
+                {
+                    Date = DateTime.Now,
+                    IsInFavor = isInFavor,
+                    ScoreId = scoreId,
+                    User = user.Id
+                };
+                voterRepository.SaveVote(vote);
+                return Ok();
+            }
+            catch (EntityNotFoundException)
+            {
+                return NotFound();
+            }
         }
     }
 }
