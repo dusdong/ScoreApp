@@ -43,6 +43,7 @@
     <Compile Include="Factories\IUserAppFactory.cs" />
     <Compile Include="Models\Score\ExpirationScore.cs" />
     <Compile Include="Models\Score\IScoreRepository.cs" />
+    <Compile Include="Models\Shared\EntityNotFoundException.cs" />
     <Compile Include="Models\Shared\PagedResult.cs" />
     <Compile Include="Models\Shared\Pagination.cs" />
     <Compile Include="Models\User\IUserRepository.cs" />

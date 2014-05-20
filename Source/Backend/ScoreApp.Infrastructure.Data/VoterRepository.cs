@@ -33,6 +33,9 @@ namespace ScoreApp.Infrastructure.Data
         {
             using (var database = DatabaseFactory.GetDatabase())
             {
+                if (!database.Exists<QueryScore>(scoreId))
+                    throw new EntityNotFoundException("Ponto com Id {0} não encontrado", scoreId);
+
                 var votes = database.FetchWhere<Vote>(s => s.ScoreId == scoreId);
                 var users = GetUsers(votes.ToArray());
                 return GetVoters(votes, users).ToList();

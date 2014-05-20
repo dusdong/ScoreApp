@@ -42,13 +42,36 @@ namespace ScoreApp.Api.Controllers
         [HttpGet]
         public IHttpActionResult GetScoreWitnesses(int scoreId)
         {
-            var witnesses = witnessRepository.GetFromScore(scoreId);
-            return Ok(witnesses);
+            try
+            {
+                var witnesses = witnessRepository.GetFromScore(scoreId);
+                return Ok(witnesses);
+            }
+            catch (EntityNotFoundException)
+            {
+                return NotFound();
+            }
         }
 
         [Route("{scoreId:int}/voters")]
         [HttpGet]
         public IHttpActionResult GetScoreVoters(int scoreId)
+        {
+            try
+            {
+                var voters = voterRepository.GetFromScore(scoreId);
+                return Ok(voters);
+            }
+            catch (EntityNotFoundException)
+            {
+                return NotFound();
+            }
+        }
+
+        [Route("{scoreId:int}/voters")]
+        [HttpPost]
+        [UserFilter]
+        public IHttpActionResult ApplyVote(User user, int scoreId, [FromBody] bool isInFavor)
         {
             var voters = voterRepository.GetFromScore(scoreId);
             return Ok(voters);
