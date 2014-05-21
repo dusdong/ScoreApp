@@ -7,7 +7,7 @@ namespace ScoreApp.Api
     {
         protected void Application_Start()
         {
-            DatabaseFactory.Setup();
+            DatabaseInitializer.Setup();
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }

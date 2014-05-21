@@ -1,5 +1,6 @@
 ﻿using NPoco;
 using ScoreApp.Domain;
+using ScoreApp.Domain.Factories;
 using ScoreApp.Infrastructure.Data.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,33 +12,29 @@ namespace ScoreApp.Infrastructure.Data
     {
         private readonly IUserRepository userRepository;
         private readonly IWitnessRepository scoreWitnessRepository;
+        private readonly IDatabase database;
 
-        public ScoreRepository(IUserRepository userRepository, IWitnessRepository scoreWitnessRepository)
+        public ScoreRepository(IDatabaseFactory databaseFactory, IUserRepository userRepository, IWitnessRepository scoreWitnessRepository)
         {
+            this.database = databaseFactory.Get();
             this.userRepository = userRepository;
             this.scoreWitnessRepository = scoreWitnessRepository;
         }
 
         public void Save(SaveScore score)
         {
-            using (var database = DatabaseFactory.GetDatabase())
-            {
-                database.Save<SaveScore>(score);
-                scoreWitnessRepository.Save(score.Id, score.Witnesses);
-            }
+            database.Save<SaveScore>(score);
+            scoreWitnessRepository.Save(score.Id, score.Witnesses);
         }
 
         public Score GetById(int id)
         {
-            using (var database = DatabaseFactory.GetDatabase())
-            {
-                var queryScore = database.SingleOrDefaultById<QueryScore>(id);
-                if (queryScore == null)
-                    return null;
+            var queryScore = database.SingleOrDefaultById<QueryScore>(id);
+            if (queryScore == null)
+                return null;
 
-                var users = GetUsers(queryScore);
-                return queryScore.ToScore(users);
-            }
+            var users = GetUsers(queryScore);
+            return queryScore.ToScore(users);
         }
 
         private IEnumerable<User> GetUsers(params QueryScore[] queryScores)
@@ -51,22 +48,19 @@ namespace ScoreApp.Infrastructure.Data
         public IPagedResult<Score> GetAll(Pagination pagination, bool timeUp = false)
         {
             var scores = new Collection<Score>();
-            using (var database = DatabaseFactory.GetDatabase())
+            var page = database.Page<QueryScore>(pagination.Page, pagination.ItemsPerPage, Sql.Builder.Where("TimeUp = @0", timeUp).OrderBy("Date DESC"));
+            var users = GetUsers(page.Items.ToArray());
+
+            foreach (var queryScore in page.Items)
+                scores.Add(queryScore.ToScore(users));
+
+            return new PagedResult<Score>
             {
-                var page = database.Page<QueryScore>(pagination.Page, pagination.ItemsPerPage, Sql.Builder.Where("TimeUp = @0", timeUp).OrderBy("Date DESC"));
-                var users = GetUsers(page.Items.ToArray());
-
-                foreach (var queryScore in page.Items)
-                    scores.Add(queryScore.ToScore(users));
-
-                return new PagedResult<Score>
-                {
-                    Items = scores,
-                    ItemsPerPage = (int)page.ItemsPerPage,
-                    CurrentPage = (int)page.CurrentPage,
-                    TotalItems = (int)page.TotalItems
-                };
-            }
+                Items = scores,
+                ItemsPerPage = (int)page.ItemsPerPage,
+                CurrentPage = (int)page.CurrentPage,
+                TotalItems = (int)page.TotalItems
+            };
         }
     }
 }

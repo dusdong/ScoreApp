@@ -37,6 +37,7 @@ namespace ScoreApp.Api
             container.RegisterWebApiRequest<IUserRepository, UserRepository>();
             container.RegisterWebApiRequest<IWitnessRepository, WitnessRepository>();
             container.RegisterWebApiRequest<IVoterRepository, VoterRepository>();
+            container.RegisterWebApiRequest<IUnitOfWorkFactory, UnitOfWorkFactory>();
             container.RegisterDecorator(typeof(IUserRepository), typeof(CachedUserRepository));
             container.RegisterDecorator(typeof(IScoreRepository), typeof(CachedScoreRepository)); //CachedScoreRepository wraps ScoreRepository.
             container.RegisterDecorator(typeof(IScoreRepository), typeof(ExpirationScoreRepository)); //ExpirationScoreRepository wraps CachedScoreRepository.
@@ -45,6 +46,7 @@ namespace ScoreApp.Api
             container.Register<ISettings, SettingsAdapter>(Lifestyle.Singleton);
             container.Register<IUserAppFactory, UserAppFactory>(Lifestyle.Singleton);
             container.Register<IExpirationScoreFactory, ExpirationScoreFactory>(Lifestyle.Singleton);
+            container.Register<IDatabaseFactory, DatabaseFactory>(Lifestyle.Singleton);
 #if DEBUG
             container.Verify();
 #endif

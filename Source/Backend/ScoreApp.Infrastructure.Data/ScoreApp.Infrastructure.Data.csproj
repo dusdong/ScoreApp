@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseFactory.cs" />
+    <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="ExpirationScoreRepository.cs" />
     <Compile Include="Mappings\QueryScoreMapping.cs" />
     <Compile Include="Mappings\SaveScoreMapping.cs" />
@@ -62,6 +63,8 @@
     <Compile Include="Models\ScoreWitness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoreRepository.cs" />
+    <Compile Include="UnitOfWork\NPocoUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\UnitOfWorkFactory.cs" />
     <Compile Include="WitnessRepository.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="VoterRepository.cs" />

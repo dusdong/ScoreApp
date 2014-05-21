@@ -1,31 +1,18 @@
 ﻿using NPoco;
-using NPoco.FluentMappings;
-using ScoreApp.Infrastructure.Data.Mappings;
-using System;
+using ScoreApp.Domain.Factories;
 
 namespace ScoreApp.Infrastructure.Data
 {
-    public static class DatabaseFactory
+    public class DatabaseFactory : IDatabaseFactory
     {
-        private static NPoco.DatabaseFactory factory;
+        private static IDatabase database;
 
-        public static IDatabase GetDatabase()
+        public IDatabase Get()
         {
-            if (factory == null)
-                throw new InvalidOperationException("Setup method was not called");
+            if (database == null)
+                database = DatabaseInitializer.GetDatabase();
 
-            return factory.GetDatabase();
-        }
-
-        public static void Setup()
-        {
-            var mappings = FluentMappingConfiguration.Configure(new SaveScoreMapping(), new QueryScoreMapping(), new ScoreWitnessMapping(), new VoteMapping());
-
-            factory = NPoco.DatabaseFactory.Config(x =>
-            {
-                x.UsingDatabase(() => new Database("ApplicationConnection"));
-                x.WithFluentConfig(mappings);
-            });
+            return database;
         }
     }
 }

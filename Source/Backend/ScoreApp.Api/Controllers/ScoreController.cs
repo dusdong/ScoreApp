@@ -1,4 +1,5 @@
 ﻿using ScoreApp.Domain;
+using ScoreApp.Domain.Factories;
 using System;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
@@ -12,9 +13,12 @@ namespace ScoreApp.Api.Controllers
         private readonly IScoreRepository scoreRepository;
         private readonly IWitnessRepository witnessRepository;
         private readonly IVoterRepository voterRepository;
+        private readonly IUnitOfWorkFactory unitOfWorkFactory;
 
-        public ScoreController(IScoreRepository scoreRepository, IWitnessRepository witnessRepository, IVoterRepository voterRepository)
+        public ScoreController(IUnitOfWorkFactory unitOfWorkFactory, IScoreRepository scoreRepository,
+            IWitnessRepository witnessRepository, IVoterRepository voterRepository)
         {
+            this.unitOfWorkFactory = unitOfWorkFactory;
             this.scoreRepository = scoreRepository;
             this.witnessRepository = witnessRepository;
             this.voterRepository = voterRepository;
@@ -76,15 +80,20 @@ namespace ScoreApp.Api.Controllers
         {
             try
             {
-                var vote = new Vote
+                using (var unit = unitOfWorkFactory.Create())
                 {
-                    Date = DateTime.Now,
-                    IsInFavor = isInFavor,
-                    ScoreId = scoreId,
-                    User = user.Id
-                };
-                voterRepository.SaveVote(vote);
-                return Ok();
+                    var vote = new Vote
+                    {
+                        Date = DateTime.Now,
+                        IsInFavor = isInFavor,
+                        ScoreId = scoreId,
+                        User = user.Id
+                    };
+                    voterRepository.SaveVote(vote);
+                    unit.Done();
+
+                    return Ok();
+                }
             }
             catch (EntityNotFoundException)
             {
