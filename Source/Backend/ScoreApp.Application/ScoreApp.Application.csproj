@@ -44,8 +44,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UserApp">
-      <HintPath>..\..\packages\UserApp.1.1.0\lib\UserApp.dll</HintPath>
+    <Reference Include="UserApp, Version=1.2.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\UserApp.1.2.8\lib\UserApp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

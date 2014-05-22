@@ -46,9 +46,9 @@
       <HintPath>..\..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="UserApp, Version=1.0.10.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="UserApp, Version=1.2.8.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\UserApp.1.1.0\lib\UserApp.dll</HintPath>
+      <HintPath>..\..\packages\UserApp.1.2.8\lib\UserApp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>
