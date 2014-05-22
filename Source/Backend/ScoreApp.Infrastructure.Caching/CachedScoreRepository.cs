@@ -16,9 +16,9 @@ namespace ScoreApp.Infrastructure.Caching
             cacheManager = CacheManager.Instance;
         }
 
-        public void Save(SaveScore score)
+        public Score Save(SaveScore score)
         {
-            repository.Save(score);
+            return repository.Save(score);
         }
 
         public Score GetById(int id)

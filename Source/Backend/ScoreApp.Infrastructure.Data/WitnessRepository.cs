@@ -3,6 +3,7 @@ using ScoreApp.Domain;
 using ScoreApp.Domain.Factories;
 using ScoreApp.Infrastructure.Data.Models;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace ScoreApp.Infrastructure.Data
@@ -35,7 +36,25 @@ namespace ScoreApp.Infrastructure.Data
 
         public void Save(int scoreId, IEnumerable<string> witnesses)
         {
-            //TODO: insert or update accordingly...
+            var toSave = new Collection<ScoreWitness>();
+            var toDelete = new Collection<string>();
+            var current = database.FetchWhere<ScoreWitness>(s => s.ScoreId == scoreId);
+
+            foreach (var witness in witnesses)
+            {
+                if (!current.Any(c => c.Witness == witness))
+                    toSave.Add(ScoreWitness.Create(scoreId, witness));
+            }
+            foreach (var cur in current)
+            {
+                if (!witnesses.Any(w => w == cur.Witness))
+                    toDelete.Add(cur.Witness);
+            }
+            
+            if (toDelete.Any())
+                database.DeleteWhere<ScoreWitness>("ScoreId = @0 AND Witness IN (@1)", scoreId, string.Join(",", toDelete.ToArray()));
+            if (toSave.Any())
+                database.InsertBulk(toSave);
         }
     }
 }

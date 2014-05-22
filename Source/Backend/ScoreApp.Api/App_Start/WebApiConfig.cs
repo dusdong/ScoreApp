@@ -29,7 +29,7 @@ namespace ScoreApp.Api
         private static void ConfigureIoC(HttpConfiguration config)
         {
             //See https://simpleinjector.codeplex.com/wikipage?title=Web%20API%20Integration for more information on SimpleInjector WebApi integration.
-            var container = new Container();
+            var container = IoC.Current;
             container.Options.PropertySelectionBehavior = new SimpleInjectorPropertySelectionBehavior();
             container.RegisterWebApiControllers(config);
             container.RegisterWebApiFilterProvider(config);
@@ -63,6 +63,7 @@ namespace ScoreApp.Api
         {
             var provider = new SimpleModelBinderProvider(typeof(Pagination), new PaginationBinder());
             config.Services.Insert(typeof(ModelBinderProvider), 0, provider);
+            //config.BindParameter(typeof(Pagination), new PaginationBinder());
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ScoreApp.Domain;
 using ScoreApp.Domain.Factories;
 using System;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
 
@@ -26,13 +27,36 @@ namespace ScoreApp.Api.Controllers
 
         [Route("")]
         [HttpGet]
-        public IHttpActionResult GetAll([ModelBinder] Pagination pagination, bool timeUp = false)
+        public IHttpActionResult GetAll([ModelBinder(BinderType = typeof(PaginationBinder))] Pagination pagination, bool timeUp = false)
         {
             var paged = scoreRepository.GetAll(pagination, timeUp);
             return Ok(paged);
         }
 
-        [Route("{scoreId:int}")]
+        [Route("")]
+        [HttpPost]
+        public IHttpActionResult AddScore([FromBody] SaveScore saveScore)
+        {
+            try
+            {
+                var user = Request.GetCurrentUser();
+                using (var unit = unitOfWorkFactory.Create(transactional: true))
+                {
+                    saveScore.Date = DateTime.Now;
+                    saveScore.Creator = user.Id;
+                    var score = scoreRepository.Save(saveScore);
+
+                    unit.Done();
+                    return Created(Url.Link("GetById", new { scoreId = score.Id }), score);
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [Route("{scoreId:int}", Name = "GetById")]
         [HttpGet]
         public IHttpActionResult GetById(int scoreId)
         {

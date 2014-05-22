@@ -21,10 +21,11 @@ namespace ScoreApp.Infrastructure.Data
             this.scoreWitnessRepository = scoreWitnessRepository;
         }
 
-        public void Save(SaveScore score)
+        public Score Save(SaveScore score)
         {
             database.Save<SaveScore>(score);
             scoreWitnessRepository.Save(score.Id, score.Witnesses);
+            return GetById(score.Id);
         }
 
         public Score GetById(int id)
