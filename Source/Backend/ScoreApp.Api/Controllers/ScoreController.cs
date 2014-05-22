@@ -1,4 +1,5 @@
-﻿using ScoreApp.Domain;
+﻿using ScoreApp.Api.Models;
+using ScoreApp.Domain;
 using ScoreApp.Domain.Factories;
 using System;
 using System.Net.Http;
@@ -35,24 +36,17 @@ namespace ScoreApp.Api.Controllers
 
         [Route("")]
         [HttpPost]
-        public IHttpActionResult AddScore([FromBody] SaveScore saveScore)
+        [ValidateModel]
+        public IHttpActionResult CreateScore([FromBody] CreateScoreModel model)
         {
-            try
+            //TODO: validate if the users really exists.
+            var user = Request.GetCurrentUser();
+            using (var unit = unitOfWorkFactory.Create(transactional: true))
             {
-                var user = Request.GetCurrentUser();
-                using (var unit = unitOfWorkFactory.Create(transactional: true))
-                {
-                    saveScore.Date = DateTime.Now;
-                    saveScore.Creator = user.Id;
-                    var score = scoreRepository.Save(saveScore);
+                var score = scoreRepository.Save(model.ToSaveScore(user.Id));
 
-                    unit.Done();
-                    return Created(Url.Link("GetById", new { scoreId = score.Id }), score);
-                }
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
+                unit.Done();
+                return Created(Url.Link("GetById", new { scoreId = score.Id }), score);
             }
         }
 
@@ -65,6 +59,28 @@ namespace ScoreApp.Api.Controllers
                 return NotFound();
 
             return Ok(score);
+        }
+
+        [Route("{scoreId:int}")]
+        [HttpPut]
+        [ValidateModel]
+        public IHttpActionResult UpdateScore(int scoreId, [FromBody] UpdateScoreModel model)
+        {
+            //TODO: make sure the creator is the only one who can edit.
+            //TODO: if a vote already exists, only the reason can be edited.
+            //TODO: if the score is expired (timeUp=true), then the update cannot happen.
+            var current = scoreRepository.GetById(scoreId);
+            if (current == null)
+                return NotFound();
+
+            var user = Request.GetCurrentUser();
+            using (var unit = unitOfWorkFactory.Create(transactional: true))
+            {
+                scoreRepository.Save(model.ToSaveScore(current));
+                unit.Done();
+
+                return Ok();
+            }
         }
 
         [Route("{scoreId:int}/witnesses")]

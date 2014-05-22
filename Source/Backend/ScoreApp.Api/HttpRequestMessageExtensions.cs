@@ -7,7 +7,7 @@ namespace System.Net.Http
     public static class HttpRequestMessageExtensions
     {
         /// <summary>
-        /// In HttPost requests, you can't use the UserFilter attribute to get the logged user. In that case, use this method inside the action.
+        /// In HttpPost or HttpPut requests, you can't use the UserFilter attribute to get the logged user. In that case, use this method inside the action.
         /// </summary>
         public static User GetCurrentUser(this HttpRequestMessage request)
         {

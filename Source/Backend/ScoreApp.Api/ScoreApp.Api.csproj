@@ -111,12 +111,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IoC.cs" />
+    <Compile Include="Models\CreateScoreModel.cs" />
+    <Compile Include="Models\UpdateScoreModel.cs" />
     <Compile Include="PaginationBinder.cs" />
     <Compile Include="SimpleInjectorPropertySelectionBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleInjectorPropertyAttribute.cs" />
     <Compile Include="UserAppAuthorizeAttribute.cs" />
     <Compile Include="UserFilter.cs" />
+    <Compile Include="ValidateModelAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
